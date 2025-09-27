@@ -1,0 +1,109 @@
+// Unique key for this ACF field group
+{
+  "key": "group_66bcb71eb77be",
+
+  // Human-readable title for the field group (used in WP admin)
+  "title": "Copy",
+
+  // All fields for this group are defined in this array
+  "fields": [
+    {
+      // Tab: Content (used to organize fields in the WP admin UI)
+      "key": "field_66bcb71eda1e2",
+      "label": "Content",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+
+    // ADD FIELDS HERE
+    // Place all content fields (text, images, buttons, etc.) after the Content tab above
+
+    {
+      // Tab: Settings (used to organize settings fields in the WP admin UI)
+      "key": "field_66bcb757da1e5",
+      "label": "Settings",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      // Clone field: pulls in the global "Settings" group for consistency across sections
+      "key": "field_66bcb760da1e6",
+      "label": "Settings",
+      "name": "settings",
+      "aria-label": "",
+      "type": "clone",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "clone": [
+        "group_5eb46ce236fe0" // ALWAYS CLONE FOR SETTINGS
+      ],
+      "display": "seamless",
+      "layout": "block",
+      "prefix_label": 0,
+      "prefix_name": 0
+    }
+  ],
+
+  // Determines where this field group appears (here: on posts)
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+
+  // Order in which this group appears in the admin
+  "menu_order": 0,
+
+  // Position and style settings for the field group in the admin
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+
+  // Field groups for sections are always inactive by default
+  "active": false, // THIS IS ALWAYS FALSE
+
+  // Optional description for the field group
+  "description": "",
+
+  // Show in REST API (0 = false)
+  "show_in_rest": 0,
+
+  // Last modified timestamp (Unix epoch)
+  "modified": 1747420297
+}

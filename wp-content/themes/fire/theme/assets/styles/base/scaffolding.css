@@ -1,0 +1,57 @@
+@layer base {
+  .site {
+    @apply flex flex-col min-h-screen;
+
+    &-main {
+      @apply flex-grow;
+    }
+  }
+
+  img {
+    @apply max-w-full;
+  }
+
+  picture.lazyload-effect {
+    img {
+      @apply transition-opacity duration-750 ease-in-out;
+
+      &.lazyload,
+      &.lazyloading {
+        @apply opacity-0;
+      }
+
+      &.lazyloaded {
+        @apply opacity-100;
+      }
+    }
+  }
+
+  svg {
+    @apply w-full h-auto max-w-full;
+  }
+
+  pre {
+    @apply p-2 text-gray-800 bg-gray-100 rounded-lg;
+  }
+
+  hr {
+    @apply my-6;
+  }
+
+  [x-cloak] {
+    @apply !hidden;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .sr-only {
+    @apply p-2 text-white bg-black;
+  }
+}

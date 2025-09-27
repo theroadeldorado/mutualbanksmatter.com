@@ -1,0 +1,312 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Color System Integration Rules
+
+## Overview
+
+This document outlines the process for integrating Figma color tokens into this WordPress theme that uses Tailwind 4.0. Always use the CSS variables approach rather than modifying the `tailwind.config.js` file.
+
+## Core Principles
+
+- **Always use CSS variables** for color tokens - never modify `tailwind.config.js`
+- **Use actual color names** that describe the color itself (e.g., `--color-navy`, `--color-gold`, `--color-forest`)
+- **Document Figma source** - always include the exact Figma color name as a comment
+- **Avoid brand/project prefixes** - never use `--color-bridge-blue` or `--color-brand-primary` - use the actual color name instead
+- **Avoid generic naming** - never use `primary`, `secondary`, `tertiary` - use color-descriptive names instead
+- **Follow responsive design** principles with proper contrast ratios
+- **Preserve accessibility** standards (WCAG AA minimum)
+- **Keep the existing architecture** - only update what's specifically requested
+- **Remove unused colors** - if a color is not present in Figma, remove it completely from the site
+- **Maintain color consistency** across all components and states
+
+## Color Naming Best Practices
+
+### ✅ Good Color Names (Descriptive of actual color with Figma documentation)
+
+```css
+--color-navy: #003057; /* Bridge Park/Primary/BP Blue */
+--color-navy-dark: #001d34; /* Bridge Park/Primary/BP Dark Blue */
+--color-navy-light: #0066a1; /* Derived lighter variant */
+--color-gold: #a89968; /* Bridge Park/Primary/BP Gold */
+--color-gold-light: #c4b087; /* Derived lighter variant */
+--color-gold-dark: #8a7a52; /* Derived darker variant */
+--color-forest: #2d5016; /* Project Name/Colors/Forest Green */
+--color-sage: #8fbc8f; /* Project Name/Colors/Sage Light */
+--color-cream: #fdf9f1; /* Bridge Park/Secondary/Off-White */
+--color-charcoal: #181818; /* Bridge Park/Primary/Soft Black */
+```
+
+### ❌ Bad Color Names (Avoid these patterns)
+
+```css
+/* DON'T use brand/project prefixes */
+--color-bridge-blue: #003057;
+--color-brand-primary: #003057;
+--color-company-navy: #003057;
+
+/* DON'T use generic names */
+--color-primary: #003057;
+--color-secondary: #a89968;
+--color-tertiary: #fdf9f1;
+
+/* DON'T use functional names for brand colors */
+--color-button-primary: #003057;
+--color-text-main: #003057;
+
+/* DON'T forget Figma documentation */
+--color-navy: #003057; /* Missing Figma reference */
+```
+
+## File Structure and Responsibilities
+
+### Primary Files to Update
+
+#### 1. `theme/assets/styles/base/theme-variables.css`
+
+**Purpose**: Define all color tokens as CSS variables with Figma documentation
+**Patterns to follow**:
+
+```css
+@theme {
+  /* Base Colors - Direct from Figma with source documentation */
+  --color-white: #ffffff; /* Project Name/Base/White */
+  --color-black: #000000; /* Project Name/Base/Black */
+  --color-gray-50: #f9fafb; /* Project Name/Neutral/Gray 50 */
+  --color-gray-100: #f3f4f6; /* Project Name/Neutral/Gray 100 */
+  --color-gray-900: #111827; /* Project Name/Neutral/Gray 900 */
+
+  /* Brand Colors - Actual color names with Figma source */
+  --color-navy: #003057; /* Project Name/Primary/Navy Blue */
+  --color-navy-light: #0066a1; /* Derived lighter variant */
+  --color-navy-dark: #001d34; /* Project Name/Primary/Navy Dark */
+  --color-gold: #a89968; /* Project Name/Primary/Gold */
+  --color-gold-light: #c4b087; /* Derived lighter variant */
+  --color-gold-dark: #8a7a52; /* Derived darker variant */
+  --color-forest: #2d5016; /* Project Name/Secondary/Forest Green */
+  --color-forest-light: #8fbc8f; /* Project Name/Secondary/Forest Light */
+  --color-forest-dark: #1a3009; /* Derived darker variant */
+  --color-cream: #fdf9f1; /* Project Name/Secondary/Cream */
+
+  /* Semantic Colors - Function-based naming */
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-cream);
+  --color-text: var(--color-charcoal);
+  --color-text-muted: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
+  --color-accent: var(--color-gold);
+  --color-primary: var(--color-navy);
+
+  /* State Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: var(--color-navy);
+}
+```
+
+#### 2. `page-style-guide.php`
+
+**Purpose**: Visual documentation and testing of all color combinations. Example [example-page-style-guide.php](mdc:.ai-context/example-page-style-guide.php)
+**Must include**:
+
+- Complete color palette with hex values and Figma source names
+- Contrast ratio testing for text/background combinations
+- Color usage examples in context
+- Interactive state demonstrations
+- Accessibility compliance verification
+
+#### 3. `theme/assets/styles/components/` files
+
+**Purpose**: Update component styles to use new color system
+
+## Color Management
+
+### Color Extraction from Figma
+
+1. **Identify all unique colors** used in the design system
+2. **Document exact Figma color names** for each color token
+3. **Name colors by their actual appearance** (navy, gold, forest, cream, etc.)
+4. **Group colors by function** (brand, neutral, semantic, state)
+5. **Create color scales** for primary colors (base, light, dark variants)
+6. **Map semantic meanings** to specific color values
+7. **Document usage contexts** for each color
+
+### Color Naming Convention
+
+```css
+/* Base Colors - Literal naming for foundational colors */
+--color-white: #ffffff;
+--color-black: #000000;
+
+/* Brand Colors - Use actual color names with variants */
+--color-navy: #main-navy-color; /* NOT --color-bridge-blue */
+--color-navy-light: #lighter-navy;
+--color-navy-dark: #darker-navy;
+--color-gold: #main-gold-color; /* NOT --color-brand-gold */
+--color-gold-light: #lighter-gold;
+--color-gold-dark: #darker-gold;
+--color-forest: #main-forest-color; /* NOT --color-primary-green */
+--color-forest-light: #lighter-forest;
+--color-forest-dark: #darker-forest;
+--color-cream: #cream-color; /* NOT --color-off-white */
+
+/* Neutral Colors - Scaled naming */
+--color-gray-50: #lightest-gray;
+--color-gray-500: #medium-gray;
+--color-gray-900: #darkest-gray;
+
+/* Semantic Colors - Function-based naming (reference actual colors) */
+--color-background: var(--color-white);
+--color-background-alt: var(--color-cream);
+--color-text: var(--color-charcoal);
+--color-border: var(--color-gray-200);
+--color-accent: var(--color-gold);
+--color-primary: var(--color-navy);
+
+/* State Colors - Action-based naming */
+--color-success: #green-value;
+--color-warning: #yellow-value;
+--color-error: #red-value;
+--color-info: var(--color-navy);
+```
+
+## Color Implementation Rules
+
+### Color Utility Naming Convention
+
+Based on actual color names:
+
+- `bg-navy`, `bg-gold`, `bg-forest`, `bg-cream` for background colors
+- `text-navy`, `text-gold`, `text-forest`, `text-charcoal` for text colors
+- `border-navy`, `border-gold`, `border-gray-200` for borders
+
+### Required Color Properties
+
+When creating color utilities, always consider:
+
+1. **Base color value** (hex, rgb, hsl)
+2. **Semantic meaning** (what the color represents)
+3. **Usage context** (where it should be applied)
+4. **Contrast requirements** (accessibility compliance)
+5. **Interactive states** (hover, focus, active, disabled)
+6. **Dark mode variants** (if applicable)
+
+## Testing and Validation
+
+### Color Accessibility Checklist
+
+- [ ] All text/background combinations meet WCAG AA (4.5:1) minimum
+- [ ] Large text meets WCAG AA (3:1) minimum
+- [ ] Interactive elements have sufficient contrast
+- [ ] Focus indicators are clearly visible
+- [ ] Color is not the only way information is conveyed
+- [ ] Colors work for colorblind users
+
+### Style Guide Requirements
+
+The `page-style-guide.php` should demonstrate:
+
+1. **Complete color palette** with hex values and usage notes
+2. **Contrast ratio testing** for all text/background combinations
+3. **Button variations** in all color states
+4. **Form elements** with validation states
+5. **Link styles** with interactive states
+6. **Alert/notification** color usage
+7. **Background/surface** color combinations
+
+### Color Testing Tools
+
+- Use browser dev tools to verify contrast ratios
+- Test with colorblind simulation tools
+- Validate focus indicators with keyboard navigation
+- Check color combinations in different lighting conditions
+
+## Implementation Workflow
+
+1. **Extract color palette** from Figma design system
+2. **Name colors by actual appearance** (navy, gold, forest, cream, etc.)
+3. **Audit existing colors** and identify what can be removed
+4. **Update theme-variables.css** with new color tokens using actual color names
+5. **Update component styles** to use new color system
+6. **Update style guide page** to showcase all colors
+7. **Test accessibility compliance** for all color combinations
+8. **Verify responsive behavior** and cross-browser compatibility
+
+## Common Pitfalls to Avoid
+
+- **Use actual color names** (use `bg-navy`, `text-gold` instead of `bg-bridge-blue`, `text-brand-primary`)
+- **Don't use brand prefixes** - avoid `bridge-`, `brand-`, `company-` prefixes
+- **Don't modify tailwind.config.js** - always use CSS variables
+- **Don't skip contrast testing** - always verify accessibility compliance
+- **Don't create too many color variants** - keep the palette focused and purposeful
+- **Don't forget interactive states** - hover, focus, active, disabled
+- **Don't ignore dark mode** - consider how colors work in different themes
+- **Don't duplicate existing colors** - consolidate similar shades
+- **Don't use colors inconsistently** - maintain semantic meaning across components
+
+## Color Organization Best Practices
+
+### Figma Color Token Structure
+
+```
+Colors/
+├── Base/
+│   ├── White (#ffffff)
+│   ├── Black (#000000)
+│   └── Transparent (transparent)
+├── Brand/
+│   ├── Navy (#003057)
+│   ├── Navy-Light (#0066a1)
+│   ├── Navy-Dark (#001D34)
+│   ├── Gold (#A89968)
+│   ├── Gold-Light (#c4b087)
+│   ├── Gold-Dark (#8a7a52)
+│   └── Cream (#FDF9F1)
+└── Neutral/
+    ├── Gray-50 (#f9fafb)
+    ├── Gray-500 (#6b7280)
+    └── Gray-900 (#111827)
+```
+
+### CSS Variable Organization
+
+```css
+@theme {
+  /* 1. Base Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* 2. Brand Colors (actual color names only) */
+  --color-navy: #003057;
+  --color-navy-light: #0066a1;
+  --color-navy-dark: #001d34;
+  --color-gold: #a89968;
+  --color-gold-light: #c4b087;
+  --color-gold-dark: #8a7a52;
+  --color-cream: #fdf9f1;
+
+  /* 3. Neutral Colors (scaled) */
+  --color-gray-50: #f9fafb;
+  --color-gray-500: #6b7280;
+  --color-gray-900: #111827;
+
+  /* 4. Semantic Colors (reference actual colors) */
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-cream);
+  --color-text: var(--color-black);
+  --color-accent: var(--color-gold);
+  --color-primary: var(--color-navy);
+
+  /* 5. State Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: var(--color-navy);
+}
+```
+
+This systematic approach ensures consistent, accessible, and maintainable color implementation across the entire theme while using clear, descriptive color names that match the actual appearance of the colors.
+

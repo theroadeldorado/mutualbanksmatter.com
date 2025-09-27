@@ -1,0 +1,216 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Typography and Design System Integration Rules
+
+## Overview
+This document outlines the process for integrating Figma design tokens (typography, colors, spacing) into this WordPress theme that uses Tailwind 4.0. Always use the CSS variables approach rather than modifying the `tailwind.config.js` file.
+
+## Core Principles
+- **Always use CSS variables** for design tokens - never modify `tailwind.config.js`
+- **Maintain consistency** with the existing design system patterns
+- **Follow responsive design** principles with mobile-first approach
+- **Preserve accessibility** standards in all typography implementations
+- **Keep the existing architecture** - only update what's specifically requested
+- **Use font-body as the primary font class** - avoid font-primary, use font-heading, font-cursive, or font-NAME for additional fonts
+- **Remove unused fonts** - if a font is not present in Figma, remove it completely from the site
+
+## File Structure and Responsibilities
+
+### Primary Files to Update
+
+#### 1. `theme/assets/css/theme-variables.css`
+**Purpose**: Define all design tokens as CSS variables
+**Patterns to follow**:
+```css
+@theme {
+  /* Font families - always include fallbacks */
+  --font-family-primary: "Custom Font", "Fallback Font", sans-serif;
+  --font-primary: var(--font-family-primary);
+
+  /* Font weights - use standard naming */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Colors - use semantic naming */
+  --color-primary: #000000;
+  --color-secondary: #ff0000;
+  --color-accent: #cccccc;
+
+  /* Spacing - follow consistent scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  /* etc... */
+}
+```
+
+#### 2. `theme/assets/css/typography.css`
+**Purpose**: Define utility classes for typography styles
+**NEVER**: add colors to the typography styles.
+**Patterns to follow**:
+```css
+/* Use @utility for reusable typography classes */
+@utility heading-1 {
+  @apply font-body text-[4rem] md:text-[6rem] lg:text-[6.83rem] xl:text-[7.665rem] 2xl:text-[8.5rem]
+         leading-[0.95] font-light tracking-[-0.0425rem] md:tracking-[-0.06rem] lg:tracking-[-0.085rem];
+}
+
+/* Always include responsive breakpoints: sm, md, lg, xl, 2xl */
+/* Use exact pixel values converted to rem units */
+/* Include font-weight, line-height, and letter-spacing when specified */
+/* Use font-body as the primary font class */
+```
+
+#### 3. `page-style-guide.php`
+**Purpose**: Visual documentation and testing of all design system components. Example [example-page-style-guide.php](mdc:.ai-context/example-page-style-guide.php)
+**Must include**:
+- Color palette with proper contrast examples
+- All typography styles with sample text
+- Button variations and states
+- Link styles and variations
+- Form element styles
+- Component examples on different backgrounds
+
+#### 4. `inc/fire-wysiwyg.php`
+**Purpose**: Make typography styles available in WordPress editor
+**Pattern**:
+```php
+array(
+  'title' => 'Typography Styles',
+  'items' => array(
+    array(
+      'title' => 'Display Name',
+      'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+      'classes' => 'utility-class-name'
+    ),
+    // ... more items
+  ),
+)
+```
+
+## Font Management
+
+### Font Loading Options
+1. **Local fonts**: Place in `theme/assets/fonts/` directory
+2. **Web fonts**: Use CSS imports in `main.css`
+3. **CDN fonts**: Include in `functions.php` using `wp_enqueue_style`
+
+### Font Declaration Pattern
+```css
+/* Always include fallback fonts */
+--font-family-body: "Primary Font", "Arial", sans-serif;
+--font-family-heading: "Heading Font", "Fallback", serif; /* Only if different from body */
+
+/* Create shorthand variables */
+--font-body: var(--font-family-body);
+--font-heading: var(--font-family-heading); /* Only if different from body */
+```
+
+## Typography Implementation Rules
+
+### Responsive Design Requirements
+- **Always define mobile-first** with base size, then add breakpoint overrides
+- **Use consistent breakpoints**: `md:`, `lg:`, `xl:`, `2xl:`
+- **Convert pixels to rem**: Divide pixel values by 16 (assuming 16px base)
+- **Maintain proportional scaling** across breakpoints
+
+### Typography Utility Naming Convention
+- `heading-1`, `heading-2`, etc. for hierarchical headings
+- `heading-1-hero` for special display variants
+- `heading-4-product` for context-specific variants
+- `text-lg`, `text-base`, `text-sm` for body text sizes
+- `text-disclaimer` for legal/fine print text
+- `kicker` for overline/label text
+
+### Required Typography Properties
+When creating typography utilities, always consider:
+1. **Font family** (`font-body`, `font-heading`, `font-cursive`, etc.)
+2. **Font size** (responsive with exact rem values)
+3. **Font weight** (`font-light`, `font-normal`, etc.)
+4. **Line height** (unitless values like `leading-[0.95]`)
+5. **Letter spacing** (when specified in design)
+6. **Text transform** (for labels, kickers, etc.)
+
+## Color System Rules
+
+### Color Naming Convention
+- Use semantic names: `theme-primary`, `theme-secondary`, `theme-accent`
+- Avoid color-literal names unless they're brand colors: `theme-red` (if red is brand color)
+- Use context-based names: `theme-background`, `theme-text`, `theme-border`
+
+### Color Implementation
+```css
+@theme {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #ff0000;
+  --color-gray: #888888;
+  --color-off-white: #f9f9f9;
+  --color-off-white-alt: #f5f5f5;
+}
+```
+
+## Component Integration Rules
+
+### Buttons
+- Create utilities for all button variants: `button`, `button-red`, `button-white`
+- Include hover and focus states
+- Ensure accessibility compliance
+
+### Links
+- Provide multiple link styles: `link`, `link-lg`, `link-bold`, `link-arrow`, etc.
+- Include variants for different backgrounds: `link-arrow-white`
+- Add interactive states (hover, focus, active)
+
+### Forms
+- Style all form elements consistently: `form-input`, `form-input-label`
+- Ensure proper focus indicators
+- Maintain consistent spacing with `form-group`
+
+## Testing and Validation
+
+### Style Guide Page Requirements
+The `page-style-guide.php` should demonstrate:
+1. **All color combinations** with proper contrast ratios
+2. **Typography hierarchy** in context with real content
+3. **Component variations** including edge cases
+4. **Responsive behavior** at different screen sizes
+5. **Accessibility features** like focus indicators
+
+### Quality Checklist
+Before completing any typography/design system update:
+- [ ] All utilities are responsive across breakpoints
+- [ ] Font loading is optimized (preload if necessary)
+- [ ] Fallback fonts are specified for all custom fonts
+- [ ] Style guide page displays all new components
+- [ ] WYSIWYG editor includes new typography options
+- [ ] No duplicate or conflicting styles exist
+- [ ] All color combinations meet WCAG contrast requirements
+- [ ] Components work on both light and dark backgrounds
+
+## Implementation Workflow
+
+1. **Extract design tokens** from Figma (fonts, colors, spacing, typography scales)
+2. **Update theme-variables.css** with new CSS variables
+3. **Create/update typography utilities** in typography.css
+4. **Update style guide page** to showcase new styles
+5. **Add WYSIWYG editor options** for content creators
+6. **Test responsive behavior** and accessibility
+7. **Verify no conflicts** with existing styles
+
+## Common Pitfalls to Avoid
+
+- **Don't modify tailwind.config.js** - always use CSS variables
+- **Don't create pixel-perfect breakpoints** - stick to standard Tailwind breakpoints
+- **Don't skip fallback fonts** - always provide system font fallbacks
+- **Don't create non-semantic class names** - use meaningful, descriptive names
+- **Don't forget responsive behavior** - test at all breakpoint sizes
+- **Don't duplicate existing utilities** - check for similar classes first
+- **Don't ignore accessibility** - maintain proper contrast and focus indicators

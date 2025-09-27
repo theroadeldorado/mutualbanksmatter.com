@@ -1,0 +1,137 @@
+@layer base {
+  html,
+  body {
+    @apply antialiased font-normal leading-normal text-gray-900 font-body;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-body;
+  }
+
+  .prose,
+  .wizzy {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    div {
+      @apply mb-6 last:mb-0;
+    }
+
+    .heading-1,
+    .heading-2,
+    .heading-3,
+    .heading-4,
+    .heading-5 {
+      @apply mb-8 last:mb-0;
+    }
+
+    .button,
+    .link {
+      @apply mb-8 mt-[5px] last:mb-0 md:mt-8 md:last:mt-0;
+    }
+
+    a:not(.button, .link) {
+      @apply underline decoration-1 underline-offset-1 hover:no-underline;
+    }
+
+    ul,
+    ol {
+      @apply mb-8 last:mb-0;
+    }
+    ul {
+      @apply pl-2 ml-4 list-disc;
+    }
+    ol {
+      @apply pl-2 ml-4 list-decimal;
+    }
+
+    .alignleft {
+      @apply float-left my-1 mr-4 text-left last:mb-0;
+    }
+    .alignright {
+      @apply float-right my-1 ml-4 text-right last:mb-0;
+    }
+    .aligncenter {
+      @apply mx-auto my-1 text-center last:mb-0;
+    }
+
+    img,
+    figure {
+      @apply h-auto max-w-full last:mb-0;
+    }
+
+    figcaption {
+      @apply mt-3 mb-4 text-left text-[14px]/[130%];
+    }
+
+    img.alignleft,
+    img.alignright {
+      @apply max-w-[50%];
+    }
+
+    p:nth-of-type(n + 2) > img {
+      @apply pt-6;
+    }
+
+    hr {
+      @apply mb-[50px] mt-0 h-px border-0 last:mb-0;
+    }
+
+    blockquote {
+      @apply my-[60px] border-l-4 border-gray-300 pl-[45px] text-[18px]/[130%] font-light lg:text-[24px];
+    }
+
+    iframe {
+      @apply h-auto max-w-full aspect-[16/9];
+    }
+
+    table {
+      @apply w-full max-w-full mb-8 last:mb-0;
+      th,
+      td {
+        @apply py-5 border-b border-gray-300;
+      }
+      th {
+        @apply bg-gray-100;
+      }
+    }
+
+    .fire-columns-2 {
+      @apply grid md:gap-x-4 md:grid-cols-2;
+    }
+
+    .fire-columns-3 {
+      @apply grid md:grid-cols-2 md:gap-x-4 lg:grid-cols-3;
+    }
+  }
+
+  .prose {
+    @apply px-4;
+    
+    [data-columns] {
+      @apply border border-gray-500 border-dashed p-4;
+
+      .fire-columns-2 {
+        @apply grid gap-x-4 md:grid-cols-2;
+      }
+
+      .fire-columns-3 {
+        @apply grid md:grid-cols-2 gap-x-4 lg:grid-cols-3;
+      }
+
+      .column {
+        @apply h-full border border-gray-500 border-dashed p-4;
+      }
+    }
+  }
+}

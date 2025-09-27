@@ -1,0 +1,369 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## ACF Section Markup Rules (for AI)
+
++**MANDATORY:**
++- The patterns in this file are REQUIRED for all section templates.
++- **Repeaters:** Only use the `have_rows()`/`the_row()` pattern for ACF repeater fields.
++- **Images:** Only use the ResponsivePics pattern as shown below.
++- **PHP TESTING:** ALWAYS test PHP syntax with `php -l filename.php` before completion
++- **PHP RESILIENCE:** Ensure all variables are properly defined and handle edge cases
++- **✅ TAILWIND 4.0 CSS CLASSES ALLOWED ✅**
+  - USE Tailwind 4.0 utility classes to style HTML elements and match Figma designs
+  - DO NOT add BEM-style classes like "section__element" to any HTML elements
+  - ALWAYS use "fire-container" for main container and grid structure
+  - Use semantic HTML elements with appropriate Tailwind classes for styling
+  - **SPACING SYNTAX:** ALWAYS use Tailwind spacing scale, NEVER arbitrary bracket values:
+    - ✅ CORRECT: `w-78`, `h-150`, `gap-14`, `p-8`, `m-4`
+    - ❌ FORBIDDEN: `w-[311px]`, `h-[600px]`, `gap-[55px]`, `p-[32px]`, `m-[16px]`
+    - **NOTE:** Bracket syntax is ONLY allowed for non-spacing values like colors when theme variables don't exist: `text-[#custom]`, `bg-[#special]`
+- **CHECK FOR EXISTING @utility CLASSES:** Always search for existing `@utility` classes before creating custom styles
+  - Search CSS files for `@utility` patterns (e.g., `.link`, `.button`, typography classes)
+  - Use existing utility classes like `.link`, `.link-arrow`, `heading-*`, `text-*`, `cta-*` when appropriate
++- **🎨 THEME VARIABLES & DESIGN SYSTEM:** ALWAYS reference theme files for proper styling:
+  - **REQUIRED FILES TO CHECK:** `theme/assets/styles/base/theme-variables.css`, `typography.css`, `buttons.css`, `links.css`, `scaffolding.css`
+  - **COLORS:** Use theme color variables instead of arbitrary hex values:
+    - `text-black` instead of `text-[#181818]` (Bridge Park Soft Black)
+    - `text-gold` instead of `text-[#A89968]` (Bridge Park Gold)
+    - `text-navy` instead of `text-[#003057]` (Bridge Park Blue)
+    - `text-white` instead of `text-[#ffffff]`
+    - `bg-white`, `bg-cream`, `bg-navy`, `bg-gold`, etc.
+    - **SVG Colors:** Use `stroke="currentColor"` and `fill="currentColor"` instead of hardcoded hex values
+  - **TYPOGRAPHY:** Use utility classes from `typography.css`:
+    - `heading-5` instead of `text-[22px] leading-[1.4] font-normal capitalize`
+    - `text-sm` instead of `text-[14px] leading-[1.6]`
+    - `text-base`, `text-lg`, `kicker`, `cta-base`, etc.
+  - **LINKS:** Always use `.link` utility with proper structure from `links.css`
+  - **BUTTONS:** Use button utilities from `buttons.css` when available
++- **Section Classes:** Only use the `$section->add_classes()` method to add the section name. Do not add decorative classes here.
++- Any deviation from these patterns is a bug and must be corrected.
+
+- **Repeaters**
+  ```php
+  <?php if( have_rows('repeater_field_name') ): ?>
+    <?php while( have_rows('repeater_field_name') ) : the_row();
+        $sub_value = get_sub_field('sub_field'); ?>
+
+          // HTML MARKUP
+
+    <?php endwhile; ?>
+  <?php endif; ?>
+  ```
+- **ALWAYS** Assume the screenshot is 1440px wide.
+- **FIGMA CODE ANALYSIS:** When available, use Figma `get_code` output to determine:
+  - Exact component dimensions and proportions
+  - Precise typography specifications (font-size, line-height, font-weight)
+  - Color values and design tokens
+  - Layout structure and grid ratios
+  - Interactive element specifications
+  - **Convert Figma pixel values to Tailwind spacing scale** (divide by 4, round to nearest 0.25: 77, 77.5, or 78)
+
+- **Images**
+  - Based on the screenshot setup the `ResponsivePics` crops (wp-content/plugins/responsive-pics/responsive-pics.php). Always use all the sizes from [responsive-images.php](mdc:inc/responsive-images.php) (wp-content/themes/fire/inc/responsive-images.php) and assume mobile is stacked and tablet is similar to desktop layout.
+
+	- **ALWAYS** update the crops string to use the same aspect ration as the screenshot, Also consider how much of the container the image is taking up in the screenshot.
+	 - **Examples**
+	 	- If the image is 1:1 and taking up 50% of the container in the screenshot. The crop would be `sm:600 600|f, md:450 450|f, lg:600 600|f, xl:960 960|f`.
+		- If the image is 4:1 and taking up 100% of the container in the screenshot. The crop would be `sm:600 150|f, md:900 225|f, lg:1200 300|f, xl:1920 480|f`.
+
+  Use a general aspect ratio from the screenshot
+  ```php
+  <?php $image_id = get_sub_field('image'); ?>
+
+  <?php if($image_id):?>
+    <?php echo ResponsivePics::get_picture($image_id, 'sm:600 100|f, md:900 150|f, lg:1200 300|f, xl:1920 500|f', 'lazyload-effect', true, true); ?>
+  <?php endif; ?>
+  ```
+
+  **❗ CRITICAL IMAGE IMPLEMENTATION RULES ❗**
+
+  - **ALWAYS** use the static method `ResponsivePics::get_picture()` with proper parameters
+  - **NEVER** instantiate the ResponsivePics class with `new ResponsivePics()`
+  - **NEVER** use the instance method `.get()` with array parameters
+  - **ALWAYS** include all responsive breakpoints (sm, md, lg, xl) in the size parameter
+  - **ALWAYS** include the lazyload parameter set to true
+
+  **✅ CORRECT ResponsivePics Implementation:**
+  ```php
+  <?php echo ResponsivePics::get_picture($image_id, 'sm:600 100|f, md:900 150|f, lg:1200 300|f, xl:1920 500|f', 'lazyload-effect', true, true); ?>
+  ```
+
+  **❌ INCORRECT ResponsivePics Implementation:**
+  ```php
+  <?php
+    $responsivePics = new ResponsivePics();
+    echo $responsivePics->get([
+      'image' => $image,
+      'sizes' => '80px',
+    ]);
+  ?>
+  ```
+
+- **HTML Structure**
+  - Keep HTML markup clean and semantic.
+  - Use appropriate HTML elements based on content purpose (headings, paragraphs, lists, etc.).
+	- **USE** Tailwind 4.0 utility classes for styling to match Figma designs exactly
+	- **USE** existing component classes from [buttons.css](mdc:theme/assets/styles/components/buttons.css), [links.css](mdc:theme/assets/styles/components/links.css), [typography.css](mdc:theme/assets/styles/base/typography.css) or [fire-container.css](mdc:theme/assets/styles/base/fire-container.css) when appropriate
+	- **SEARCH FOR @utility CLASSES:** Use `grep -r "@utility" theme/assets/styles/` to find existing utility classes before creating custom styles
+	- **TYPOGRAPHY:** Always use the typography utility classes from [typography.css](mdc:theme/assets/styles/base/typography.css) for consistent text styling:
+		- **Headings:** `heading-display`, `heading-1`, `heading-2`, `heading-3`, `heading-4`, `heading-5`, `heading-6`
+		- **Body Text:** `text-lg`, `text-base`, `text-sm`, `text-xs`
+		- **Special Text:** `kicker`, `cta-base`, `cta-sm`
+	- **COMBINE** component classes with Tailwind utilities for precise design matching
+	- YOU MAY NEVER MODIFY ANY OF THOSE FILES.
+  - Structural layout should be minimal and focused on content organization.
+	- Based on the screenshot and ratios of the widths of components use [fire-container.css](mdc:theme/assets/styles/base/fire-container.css) to build out the grid structure. If no mobile mock up always assume it stacks on mobile and tablet will have the same grid structor as desktop. Here is an example of a simple 50/50 grid structure.
+	```html
+	<div class="fire-container">
+		<div class="md:col-[col-1/col-6]">
+			<!-- LEFT SIDE -->
+		</div>
+		<div class="md:col-[col-7/col-12]">
+			<!-- Right Site -->
+		</div>
+	</div>
+	```
+	- **USE** `col-[main]` as `col-[col-1/col-12]` and note that all direct children get .col-[main] automatically applied.
+	- **USE** `col-[full-width]` if an element is full screen width and needs to break out of the container. You can also use `col-[col-7/full-width]` if an element only breaks out to the right side. more examples in [grid-debug.php](mdc:templates/components/grid-debug/grid-debug.php)
+	- [grid-debug.php](mdc:templates/components/grid-debug/grid-debug.php) has other examples of how to use fire-container and sub-grid. When nesting grids try to use the `grid grid-cols-subgrid` classes to maintain the same grid sturcture.
+  - If there is a background image that has text on top of it use "grid-stack" from [fire-container.css](mdc:theme/assets/styles/base/fire-container.css) and add the `full-image absolute inset-0` class from [scaffolding.css](mdc:theme/assets/styles/base/scaffolding.css) in the ResponsivePics classes. We absolute the image so it only the content dictates the space. Sometimes a aspect-ratio is needed. ex: `apsect-[3/4]`
+	- Make sure if you use grid stack and content needs to be over an image add `relative z-[1]` classes to ensure the content is over the image.
+		- example:
+			```php
+			<div class="grid-stack">
+				<?php if ($image_id): ?>
+					<div class="relative">
+						<?php echo ResponsivePics::get_picture($featured_image['id'], CROPS, 'lazyload-effect full-image absolute inset-0', true, false); ?>
+					</div>
+				<?php endif;>
+				<div class="relative z-[1]">
+					CONTENT HERE
+				</div>
+			</div>
+		```
+
+
+## 🔍 EXISTING UTILITY CLASS DISCOVERY
+
+**ALWAYS search for existing @utility classes before creating custom styles:**
+
+```bash
+# Search for all utility classes
+grep -r "@utility" theme/assets/styles/
+
+# Results show available classes:
+# links.css:@utility link
+# typography.css:@utility heading-1
+# typography.css:@utility text-base
+# typography.css:@utility cta-base
+```
+
+**Available Utility Classes:**
+- **Links**: `.link` (with `.link-first`, `.link-last`, `.link-arrow` sub-elements)
+- **Typography**: `heading-display`, `heading-1` through `heading-6`, `text-lg`, `text-base`, `text-sm`, `text-xs`, `kicker`
+- **CTAs**: `cta-base`, `cta-sm`
+
+**✅ CORRECT: Using existing .link utility with theme colors**
+```php
+<div class="group">
+  <a href="<?php echo esc_url($link['url']); ?>" class="link text-black hover:text-gold">
+    <span class="link-first"><?php echo esc_html($link['title']); ?></span>
+    <span class="link-last"><?php echo esc_html($link['title']); ?></span>
+    <span class="link-arrow"><!-- SVG --></span>
+  </a>
+</div>
+```
+
+**❌ INCORRECT: Creating custom inline styles**
+```php
+<a href="<?php echo esc_url($link['url']); ?>"
+   class="inline-flex items-center gap-3 text-[16px] font-medium">
+  <?php echo esc_html($link['title']); ?>
+  <div class="w-3.5 h-3.5"><!-- Custom SVG --></div>
+</a>
+```
+
+## 🎨 FIGMA CODE INTEGRATION
+
+When Figma `get_code` is available, use it to extract:
+
+- **Exact Dimensions**: Convert Figma pixel values to Tailwind spacing scale (e.g., 311px → `w-78`, 303px → `w-76`)
+- **Precise Typography**: Match exact font sizes, line heights, and weights (e.g., `text-[22px] leading-[1.4]`)
+- **Color Values**: Use exact hex colors from design tokens (e.g., `text-[#181818]`, `text-[#A89968]`)
+- **Layout Structure**: Follow the exact component hierarchy and spacing (e.g., `gap-[55px]` → `gap-14`, `gap-8`)
+- **Interactive Elements**: Copy exact SVG paths and styling for icons and buttons
+
+**Pixel to Tailwind Conversion Rules:**
+- **MANDATORY:** Always use Tailwind spacing scale, NEVER use arbitrary bracket syntax
+- Divide Figma pixel values by 4
+- Round to nearest 0.25 increment (77, 77.5, 78)
+- Examples:
+  - 311px ÷ 4 = 77.75 → `w-78` (NEVER `w-[311px]`)
+  - 303px ÷ 4 = 75.75 → `w-76` (NEVER `w-[303px]`)
+  - 600px ÷ 4 = 150 → `h-150` (NEVER `h-[600px]`)
+  - 55px ÷ 4 = 13.75 → `gap-14` (NEVER `gap-[55px]`)
+  - 831px ÷ 4 = 207.75 → use `flex-1` for large flexible areas
+- **FORBIDDEN:** Bracket syntax for spacing (`w-[311px]`, `h-[600px]`, `gap-[55px]`, etc.)
+- **REQUIRED:** Use Tailwind spacing scale (`w-78`, `h-150`, `gap-14`, etc.)
+
+**Example of Figma-informed implementation with theme variables:**
+```php
+<!-- Based on Figma: 311px → w-78 content area, using heading-5 utility -->
+<div class="md:col-[col-1/col-4] space-y-8">
+  <?php new Fire_Heading($title_tag, $title_text, 'heading-5 text-black'); ?>
+  <div class="text-sm text-black">
+    <?php echo esc_html($subtitle); ?>
+  </div>
+</div>
+
+<!-- Based on Figma: 831px (flex-1) + 303px (w-76) + gap-5 layout -->
+<div class="md:col-[col-5/col-12] flex gap-5">
+  <div class="flex-1 h-150"><!-- Main image --></div>
+  <div class="w-76 h-150"><!-- Secondary image --></div>
+</div>
+```
+
+## ✅ CORRECT Example (WITH TAILWIND 4.0 STYLING & TYPOGRAPHY CLASSES)
+```php
+<?php $section->start(); ?>
+<div class="py-16 lg:py-24 bg-gray-50">
+  <div class="fire-container">
+    <div class="md:col-[col-1/col-6] space-y-6">
+      <?php if ($title): ?>
+        <h2 class="heading-2 text-gray-900"><?php echo esc_html($title); ?></h2>
+      <?php endif; ?>
+
+      <?php if ($description): ?>
+        <div class="wizzy text-lg text-gray-700">
+          <?php echo $description; ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    <div class="md:col-[col-7/col-12]">
+      <?php if (have_rows('items')): ?>
+        <div class="space-y-8">
+          <?php while (have_rows('items')): the_row();
+            $item_title = get_sub_field('title');
+            $item_text = get_sub_field('text');
+          ?>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="heading-5 text-gray-900 mb-3"><?php echo esc_html($item_title); ?></h3>
+              <div class="text-base text-gray-600"><?php echo wp_kses_post($item_text); ?></div>
+            </div>
+          <?php endwhile; ?>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>
+<?php $section->end(); ?>
+```
+
+## 🧪 PHP TESTING & RESILIENCE
+
+**ALWAYS test PHP syntax before completion:**
+```bash
+php -l templates/components/section-name/section-name.php
+```
+
+**JavaScript Testing Note:**
+- ES6 modules (export/import) are expected and correct for Alpine.js components
+- Use `node -c` for basic syntax checking, but expect ES6 module errors (this is normal)
+- Focus on PHP testing as it's more critical for runtime errors
+
+**Common PHP Issues to Avoid:**
+- **Undefined Variables**: Never use JavaScript/Alpine variables in PHP context
+- **Division by Zero**: Check for zero values before modulo operations
+- **Missing Null Checks**: Always check if ACF fields exist before using them
+- **Improper Escaping**: Use `esc_html()`, `esc_url()`, `wp_kses_post()` appropriately
+
+**✅ CORRECT PHP Patterns:**
+```php
+<?php
+// Always check if fields exist
+$title = get_sub_field('title');
+if ($title): ?>
+  <h2><?php echo esc_html($title); ?></h2>
+<?php endif; ?>
+
+// Proper repeater handling
+<?php if (have_rows('items')): ?>
+  <?php while (have_rows('items')): the_row();
+    $item_title = get_sub_field('item_title');
+  ?>
+    <?php if ($item_title): ?>
+      <div><?php echo esc_html($item_title); ?></div>
+    <?php endif; ?>
+  <?php endwhile; ?>
+<?php endif; ?>
+
+// Use existing utility classes (check with grep first)
+<?php if ($link): ?>
+  <div class="group">
+    <a href="<?php echo esc_url($link['url']); ?>" class="link">
+      <span class="link-first"><?php echo esc_html($link['title']); ?></span>
+      <span class="link-last"><?php echo esc_html($link['title']); ?></span>
+      <span class="link-arrow"><!-- SVG icon --></span>
+    </a>
+  </div>
+<?php endif; ?>
+
+// Alpine.js variables stay in HTML attributes, not PHP
+<div x-data="component" :class="currentSlide === 0 ? 'active' : ''">
+
+// CORRECT: Use Tailwind spacing scale
+<div class="w-78 h-150 gap-14 p-8 m-4">
+```
+
+**❌ INCORRECT PHP Patterns:**
+```php
+<?php
+// DON'T: Using Alpine variables in PHP
+$current = $currentSlide; // ERROR: Undefined variable
+
+// DON'T: No null checks
+echo $title; // ERROR: if $title is null
+
+// DON'T: Division by zero
+$result = $value % $totalSlides; // ERROR: if $totalSlides is 0
+
+// DON'T: Use arbitrary bracket syntax for spacing
+<div class="w-[311px] h-[600px] gap-[55px] p-[32px] m-[16px]">
+?>
+```
+
+## ❌ INCORRECT Example (WITH BEM CLASSES)
+```php
+<?php $section->start(); ?>
+<div class="section">
+  <div class="section__inner">
+    <?php if ($title): ?>
+      <h2 class="section__title"><?php echo esc_html($title); ?></h2>
+    <?php endif; ?>
+
+    <?php if ($description): ?>
+      <div class="section__description wizzy">
+        <?php echo $description; ?>
+      </div>
+    <?php endif; ?>
+	</div>
+	<div class="section__inner">
+    <?php if (have_rows('items')): ?>
+      <div class="section__items">
+        <?php while (have_rows('items')): the_row();
+          $item_title = get_sub_field('title');
+          $item_text = get_sub_field('text');
+        ?>
+          <div class="section__item">
+            <h3 class="section__item-title"><?php echo esc_html($item_title); ?></h3>
+            <div class="section__item-text"><?php echo wp_kses_post($item_text); ?></div>
+          </div>
+        <?php endwhile; ?>
+      </div>
+    <?php endif; ?>
+  </div>
+</div>
+<?php $section->end(); ?>

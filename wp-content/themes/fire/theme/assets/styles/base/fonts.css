@@ -1,0 +1,44 @@
+@layer base {
+  /* src is relative to this file (fonts.css) */
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../../fonts/Open_Sans/OpenSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../../fonts/Open_Sans/OpenSans-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../../fonts/Open_Sans/OpenSans-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../../fonts/Open_Sans/OpenSans-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../../fonts/Open_Sans/OpenSans-SemiBold.ttf');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../../fonts/Open_Sans/OpenSans-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+  }
+}

@@ -1,0 +1,16 @@
+name: 🗒️ Page Issue
+description: Template for building and testing a new page
+labels: page
+body:
+  - type: textarea
+    id: page_checklist
+    attributes:
+      label: Page Checklist
+      description: Use this checklist to guide your page work.
+      value: |
+        ### 📄 Content Entry
+        - [ ] 📝 Create the page
+        - [ ] 🧩 Add all sections to the page
+        - [ ] 📰 Populate all sections with real content
+    validations:
+      required: true

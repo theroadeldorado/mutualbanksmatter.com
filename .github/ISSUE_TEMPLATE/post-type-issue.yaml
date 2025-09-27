@@ -1,0 +1,54 @@
+name: 📬 Post Type Issue
+description: Template for building and testing a new post type
+labels: post type
+body:
+  - type: textarea
+    id: posttype_checklist
+    attributes:
+      label: Post Type Checklist
+      description: Use this checklist to guide your post type work.
+      value: |
+        ### 🎨 Mocks
+        **Desktop:** [Desktop](URL HERE)
+        **Mobile:** [Mobile](URL HERE)
+
+        ### 🎯 Requirements
+        - [ ] 🔍 Check comments in Figma for requirements or development notes
+
+        ### 📋 Post Type Checklist
+        - [ ] 🏗️ Create Post type and fields using ACF
+        - [ ] 🔗 Add slug rewrites if needed
+        - [ ] 🔍 Hide from search if needed
+        - [ ] 🏷️ Connect or remove taxonomies if needed
+        - [ ] 🌐 Should the post have a url? if not disable "Public" in the ACF options
+
+        ### 💻 Development of Detail Page
+        - [ ] 👷🏻‍♂️ Build the post type the right way.
+          - 🏞️ All thumbnail as 600px wide jpg for the sections thumbnail.
+          - 🎨 Find and develop all variants
+          - 🔒 Escape and hardcode text `_e('the text', 'fire');`
+          - 🖼️ Ensure that all images are responsive and have the correct crop sizes
+          - ✨ Ensure best user experience for the component (.small-wizzy, .button-group-color, etc.)
+          - 🔄 If piece of the component is reusable, create it as a reusable block/include
+          - 🏗️ Build ACF Group
+          - 📄 Add to page sections
+          - 🚀 Run `npm run build`
+
+        ### 🧪 Testing of Detail Page
+        - [ ] 🔬 **Test multiple variations for sections.** Try things like different copy length, with and without images, etc. Try to break the section, by using it how it wasn't intended. Don't assume the mock will always be how it's used.
+        - [ ] ♿ Check aXe for general accessibility & semantics
+        - [ ] 👨‍🔬 Responsive Testing
+          - 🖥️ Test Large Desktop (1920)
+          - 💻 Test Medium Desktop (1440)
+          - 🖱️ Test Small Desktop (1280)
+          - 📱 Test iPad
+          - 📱 Test iPhone
+          - 🤖 Test Android
+        - [ ] 📡 Browser Testing
+          - 🌐 Test Desktop: Chrome
+          - 🦊 Test Desktop: FireFox
+          - 🍎 Test Desktop: Safari
+          - 🔷 Test Desktop: Edge
+
+    validations:
+      required: true

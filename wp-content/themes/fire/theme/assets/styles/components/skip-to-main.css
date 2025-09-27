@@ -1,0 +1,13 @@
+@layer components {
+  .skip-to-main {
+    left: -999px;
+    z-index: -999;
+  }
+
+  .skip-to-main:focus,
+  .skip-to-main:active {
+    @apply top-auto left-auto;
+    @apply w-auto h-auto py-1 px-3;
+    z-index: 999;
+  }
+}

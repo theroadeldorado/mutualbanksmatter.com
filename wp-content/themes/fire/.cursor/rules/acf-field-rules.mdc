@@ -1,0 +1,70 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## ACF Section Field Rules (for AI)
+- **NEVER** Assume anything from the name of the section. Only ever base fields on what you see in the image provided.
+
+- **Image Analysis Guidelines:**
+  - **Look for background images** - if content appears overlaid on images, create image fields for backgrounds
+  - **Count repeating elements** - if you see multiple similar items (cards, boxes, etc.), use a repeater field
+  - **Identify text hierarchy** - distinguish between titles, subtitles, descriptions, and call-to-action text
+  - **Notice layout patterns** - side-by-side cards, stacked content, grid layouts, etc.
+  - **Check for interactive elements** - buttons, links, hover states indicated by styling
+  - **Observe text positioning** - text overlaid on images vs. text beside images requires different field structures
+
+- **Headings:**
+  - Use the field name "Eyebrow" for text fields related to headings.
+
+- **Textarea Fields:**
+  - Limit to 2 rows.
+  - Always set `"new_lines": "wpautop"` in the field settings.
+  - Example:
+    ```json
+    {
+      "rows": "2",
+      "new_lines": "wpautop"
+    }
+    ```
+
+- **WYSIWYG Fields:**
+  - Use these settings:
+    ```json
+    {
+      "type": "wysiwyg",
+      "wrapper": {
+        "class": "small-wizzy" // Use "small-wizzy" if under 7 rows of text
+      },
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 0
+    }
+    ```
+- **Call to Action and Links Fields:**
+ - use these settings:
+	```json
+	{
+		"label": "Link",
+		"name": "link",
+		"type": "link",
+		"wrapper": {
+			"width": "",
+			"class": "",
+			"id": ""
+		}
+	}
+	```
+
+- **Images & Galleries**
+  - Use these settings:
+  ```json
+  {
+    "return_format": "id",
+    "preview_size": "thumbnail"
+  }
+  ```
+
+- **General:**
+  - Follow these conventions for all new ACF section fields.
+  - Only use these patterns unless otherwise specified.

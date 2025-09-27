@@ -1,0 +1,69 @@
+{
+  "name": "clarifynl/responsive-pics",
+  "type": "wordpress-plugin",
+  "description": "Responsive Pics is a Wordpress tool for resizing images on the fly.",
+  "keywords": [
+    "php",
+    "wordpress",
+    "picture",
+    "image",
+    "resizing"
+  ],
+  "homepage": "https://responsive.pics",
+  "license": [
+      "GPL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Wimer Hazenberg",
+      "email": "wimer@clarify.nl",
+      "homepage": "https://clarify.nl"
+    },
+    {
+      "name": "Toine Kamps",
+      "email" : "toine.kamps@clarify.nl",
+      "homepage": "https://clarify.nl"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/clarifynl/responsive-pics/issues",
+    "source": "https://github.com/clarifynl/responsive-pics",
+    "docs": "https://responsive.pics"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:clarifynl/responsive-pics.git"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "composer/installers": "^1.0|^2.0"
+  },
+  "require-dev": {
+    "slowprog/composer-copy-file": "~0.3",
+    "woocommerce/action-scheduler": "^3.5",
+    "wpackio/enqueue": "^3.5"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "extra": {
+    "copy-file": {
+      "vendor/wpackio/enqueue/inc/": "lib/wpackio/enqueue/inc/"
+    },
+    "installer-paths": {
+      "lib/{$name}/": ["woocommerce/action-scheduler"]
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+        "SlowProg\\CopyFile\\ScriptHandler::copy"
+    ],
+    "post-update-cmd": [
+        "SlowProg\\CopyFile\\ScriptHandler::copy"
+    ]
+  }
+}

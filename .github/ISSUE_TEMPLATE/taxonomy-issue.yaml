@@ -1,0 +1,20 @@
+name: 🏷️ Taxonomy Issue
+description: Template for building and testing a new taxonomy
+labels: taxonomy
+body:
+  - type: textarea
+    id: taxonomy_checklist
+    attributes:
+      label: Taxonomy Checklist
+      description: Use this checklist to guide your taxonomy work.
+      value: |
+        ### 📋 Checklist
+        - [ ] 🏗️ Create Taxonomy using ACF
+        - [ ] 📝 Add post type specific fields using ACF
+        - [ ] 🔍 Hide from search if needed
+        - [ ] 📄 Build or Hide Post Detail Page Template
+        - [ ] 📚 Build or Hide Archive Page Template
+        - [ ] 🏷️ Build or Hide Taxonomy Archive Page Template
+
+    validations:
+      required: true
