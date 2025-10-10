@@ -38,14 +38,18 @@ $global_scripts = function_exists('get_field') ? get_field('scripts', 'site_sett
   </footer>
 </div><!-- #page -->
 
+<div class="pointer-events-none fixed right-0 bottom-0 text-navy">
+  <?php new Fire_SVG('icon--bg-logo'); ?>
+</div>
+
 <?php
   // Check if environment is local
   if (!function_exists('is_wpe')) {
     require get_template_directory() . '/templates/components/grid-debug/grid-debug.php';
   }
 
-  wp_footer(); 
-  
+  wp_footer();
+
   fire_print_scripts_at_location($global_scripts, 'body-after');
 
   ?>

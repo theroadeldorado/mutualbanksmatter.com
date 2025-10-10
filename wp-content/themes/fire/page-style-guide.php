@@ -74,8 +74,11 @@
 
       <hr>
 
-      <div class="flex flex-wrap">
-        <button type="button" class="button button-primary">primary</button>
+      <div class="flex flex-wrap gap-4">
+        <button type="button" class="button">primary</button>
+        <button type="button" class="button">primary <?php new Fire_SVG('icon--chevron-right'); ?></button>
+        <button type="button" class="button-outline">outline</button>
+        <button type="button" class="button-charcoal">charcoal</button>
       </div>
 
       <hr>

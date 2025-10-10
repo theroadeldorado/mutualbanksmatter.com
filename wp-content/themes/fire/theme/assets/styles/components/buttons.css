@@ -1,34 +1,48 @@
+@utility button {
+  @apply inline-flex items-center gap-2 px-7 py-2.5;
+  @apply rounded-lg text-lg;
+  @apply font-normal text-charcoal no-underline;
+  @apply transition-all duration-200 cursor-pointer;
+  @apply focus:outline-none;
+
+  svg {
+    @apply w-4 h-auto;
+  }
+}
+
 @layer components {
   button {
-    @apply cursor-pointer;
-    @apply transition-all duration-200 cursor-pointer;
+    @apply cursor-pointer transition-all duration-200;
 
     &:focus-visible {
-      outline: thin dotted theme(colors.gray.500);
+      outline: thin dotted var(--color-light-blue);
     }
   }
 
   .button {
-    @apply inline-block px-4 py-2;
-    @apply rounded;
-    @apply font-bold text-white no-underline;
-    @apply transition-all duration-200 cursor-pointer;
+    @apply button bg-light-blue ring-light-blue ring-1;
 
-    &:focus {
-      outline: none;
+    &:hover,
+    &:active {
+      @apply bg-charcoal text-white!;
     }
+  }
 
-    &-primary {
-      @apply bg-gray-500;
+  .button-outline {
+    @apply button bg-transparent ring-white text-white ring-1;
 
-      &:hover,
-      &:active {
-        @apply bg-gray-700;
-      }
+    &:hover,
+    &:active {
+      @apply bg-white text-charcoal ring-white;
+    }
+  }
 
-      &:focus {
-        box-shadow: 0px 0px 0px 2px theme(colors.gray.700);
-      }
+  .button-charcoal {
+    @apply button bg-charcoal text-white ring-light-blue  ring-1;
+
+    &:hover,
+    &:active {
+      @apply bg-white text-charcoal ring-white;
     }
   }
 }

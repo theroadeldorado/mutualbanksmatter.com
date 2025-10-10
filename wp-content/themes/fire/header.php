@@ -48,7 +48,7 @@ if (!function_exists('get_field')) {
 ?>
 
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+<div id="page" class="site relative z-[1]">
   <a class="sr-only skip-link focus:not-sr-only" href="#primary"><?php esc_html_e( 'Skip to content', 'fire' ); ?></a>
 
   <header class="site-header fire-container my-4">
