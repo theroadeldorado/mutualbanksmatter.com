@@ -1,331 +1,333 @@
 {
-  "key": "group_5eb32b583bb78",
-  "title": "Site Settings",
-  "fields": [
-    {
-      "key": "field_5ebb05686f039",
-      "label": "Social",
-      "name": "",
-      "aria-label": "",
-      "type": "tab",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "placement": "top",
-      "endpoint": 0,
-      "selected": 0
-    },
-    {
-      "key": "field_5ebb03e4ee87d",
-      "label": "Social Links",
-      "name": "social_links",
-      "aria-label": "",
-      "type": "group",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "sub_fields": [
+    "key": "group_5eb32b583bb78",
+    "title": "Site Settings",
+    "fields": [
         {
-          "key": "field_5ebb03f0ee87e",
-          "label": "Facebook",
-          "name": "facebook",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_5ebb05686f039",
+            "label": "Social",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
-          "key": "field_5ebb0457ee880",
-          "label": "X",
-          "name": "x",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_5ebb03e4ee87d",
+            "label": "Social Links",
+            "name": "social_links",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ebb03f0ee87e",
+                    "label": "Facebook",
+                    "name": "facebook",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb0457ee880",
+                    "label": "X",
+                    "name": "x",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb046bee881",
+                    "label": "LinkedIn",
+                    "name": "linkedin",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb0478ee882",
+                    "label": "YouTube",
+                    "name": "youtube",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb044bee87f",
+                    "label": "Instagram",
+                    "name": "instagram",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb04f9ee883",
+                    "label": "Pinterest",
+                    "name": "pinterest",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_67fec1ee2b44a",
+                    "label": "TikTok",
+                    "name": "tiktok",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": ""
+                }
+            ]
         },
         {
-          "key": "field_5ebb046bee881",
-          "label": "LinkedIn",
-          "name": "linkedin",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_5efe2db0341c7",
+            "label": "Bugherd",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
-          "key": "field_5ebb0478ee882",
-          "label": "YouTube",
-          "name": "youtube",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_5efe2ddb341c9",
+            "label": "Bugherd Enabled",
+            "name": "bugherd_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable Bugherd for all site visitors?",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
-          "key": "field_5ebb044bee87f",
-          "label": "Instagram",
-          "name": "instagram",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_5efe2dba341c8",
+            "label": "Bugherd API Key",
+            "name": "bugherd_api_key",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "85",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
-          "key": "field_5ebb04f9ee883",
-          "label": "Pinterest",
-          "name": "pinterest",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_66b62dd87af68",
+            "label": "Global Scripts",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
-          "key": "field_67fec1ee2b44a",
-          "label": "TikTok",
-          "name": "tiktok",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "allow_in_bindings": 0,
-          "placeholder": ""
+            "key": "field_66b62de37af69",
+            "label": "Scripts",
+            "name": "scripts",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Script",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66b62dfa7af6a",
+                    "label": "Script Location",
+                    "name": "location",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "head-before": "Before <head>",
+                        "head-after": "After <head>",
+                        "body-before": "Before <body>",
+                        "body-after": "After <body>"
+                    },
+                    "default_value": "head-before",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66b62de37af69",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_66b62e837af6b",
+                    "label": "Script",
+                    "name": "script",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_66b62de37af69"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "key": "field_5efe2db0341c7",
-      "label": "Bugherd",
-      "name": "",
-      "aria-label": "",
-      "type": "tab",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "placement": "top",
-      "endpoint": 0,
-      "selected": 0
-    },
-    {
-      "key": "field_5efe2ddb341c9",
-      "label": "Bugherd Enabled",
-      "name": "bugherd_enabled",
-      "aria-label": "",
-      "type": "true_false",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "15",
-        "class": "",
-        "id": ""
-      },
-      "message": "Enable Bugherd for all site visitors?",
-      "default_value": 0,
-      "ui": 1,
-      "ui_on_text": "",
-      "ui_off_text": ""
-    },
-    {
-      "key": "field_5efe2dba341c8",
-      "label": "Bugherd API Key",
-      "name": "bugherd_api_key",
-      "aria-label": "",
-      "type": "text",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "85",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "placeholder": "",
-      "prepend": "",
-      "append": "",
-      "maxlength": ""
-    },
-    {
-      "key": "field_66b62dd87af68",
-      "label": "Global Scripts",
-      "name": "",
-      "aria-label": "",
-      "type": "tab",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "placement": "top",
-      "endpoint": 0,
-      "selected": 0
-    },
-    {
-      "key": "field_66b62de37af69",
-      "label": "Scripts",
-      "name": "scripts",
-      "aria-label": "",
-      "type": "repeater",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "pagination": 0,
-      "min": 0,
-      "max": 0,
-      "collapsed": "",
-      "button_label": "Add Script",
-      "rows_per_page": 20,
-      "sub_fields": [
-        {
-          "key": "field_66b62dfa7af6a",
-          "label": "Script Location",
-          "name": "location",
-          "aria-label": "",
-          "type": "select",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "choices": {
-            "head-before": "Before <head>",
-            "head-after": "After <head>",
-            "body-before": "Before <body>",
-            "body-after": "After <body>"
-          },
-          "default_value": "head-before",
-          "return_format": "value",
-          "multiple": 0,
-          "allow_null": 0,
-          "ui": 0,
-          "ajax": 0,
-          "placeholder": "",
-          "parent_repeater": "field_66b62de37af69"
-        },
-        {
-          "key": "field_66b62e837af6b",
-          "label": "Script",
-          "name": "script",
-          "aria-label": "",
-          "type": "textarea",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "maxlength": "",
-          "rows": "",
-          "placeholder": "",
-          "new_lines": "",
-          "parent_repeater": "field_66b62de37af69"
-        }
-      ]
-    }
-  ],
-  "location": [
-    [
-      {
-        "param": "options_page",
-        "operator": "==",
-        "value": "acf-options-site-settings"
-      }
-    ]
-  ],
-  "menu_order": 0,
-  "position": "normal",
-  "style": "default",
-  "label_placement": "top",
-  "instruction_placement": "label",
-  "hide_on_screen": "",
-  "active": true,
-  "description": "",
-  "show_in_rest": 0,
-  "modified": 1744749059
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758992467
 }
