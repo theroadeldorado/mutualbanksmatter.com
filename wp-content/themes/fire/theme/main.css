@@ -1,9 +1,10 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/forms";
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 /* base */
 @import './assets/styles/base/theme-variables';
-@import './assets/styles/base/fonts';
 @import './assets/styles/base/scaffolding';
 @import './assets/styles/base/typography';
 @import './assets/styles/base/fire-container';

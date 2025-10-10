@@ -14,31 +14,31 @@
         <h2 class="mb-4 text-2xl font-bold">Theme Colors</h2>
         <div class="flex flex-wrap gap-4">
           <div class="flex flex-col items-center">
-            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white" style="background-color: var(--color-light-blue);">
+            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white bg-light-blue">
               <span class="text-sm font-semibold">Light Blue</span>
             </div>
             <span class="text-xs text-gray-600">#64bfdd</span>
           </div>
           <div class="flex flex-col items-center">
-            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white" style="background-color: var(--color-blue);">
+            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white bg-blue">
               <span class="text-sm font-semibold">Blue</span>
             </div>
             <span class="text-xs text-gray-600">#325087</span>
           </div>
           <div class="flex flex-col items-center">
-            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white" style="background-color: var(--color-navy);">
+            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white bg-navy">
               <span class="text-sm font-semibold">Navy</span>
             </div>
             <span class="text-xs text-gray-600">#223f5d</span>
           </div>
           <div class="flex flex-col items-center">
-            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white" style="background-color: var(--color-teal);">
+            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white bg-teal">
               <span class="text-sm font-semibold">Teal</span>
             </div>
             <span class="text-xs text-gray-600">#5eaf98</span>
           </div>
           <div class="flex flex-col items-center">
-            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white" style="background-color: var(--color-charcoal);">
+            <div class="flex items-center justify-center w-40 h-24 mb-2 text-white bg-charcoal">
               <span class="text-sm font-semibold">Charcoal</span>
             </div>
             <span class="text-xs text-gray-600">#282828</span>
@@ -65,6 +65,10 @@
       <hr>
 
       <p class="text-lg">text-lg paragraph: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, voluptatibus perferendis recusandae error unde repudiandae. Iste ab eius quibusdam inventore?</p>
+
+      <p class="text-base">text-base paragraph: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, voluptatibus perferendis recusandae error unde repudiandae. Iste ab eius quibusdam inventore?</p>
+
+      <p class="text-sm">text-sm paragraph: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, voluptatibus perferendis recusandae error unde repudiandae. Iste ab eius quibusdam inventore?</p>
 
       <p>paragraph: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, voluptatibus perferendis recusandae error unde repudiandae. Iste ab eius quibusdam inventore?</p>
 
