@@ -163,7 +163,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "24",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -292,5 +292,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760142179
+    "modified": 1760146402
 }

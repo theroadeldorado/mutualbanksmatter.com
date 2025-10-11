@@ -1,9 +1,9 @@
-@import 'tailwindcss';
+@import 'tailwindcss/theme.css' layer(theme);
 @import './assets/styles/base/theme-variables';
 
 @layer base {
   body {
-    @apply bg-white! text-black!;
+    @apply bg-[#f0f0f1]! text-black!;
   }
   #message {
     @apply block!;
