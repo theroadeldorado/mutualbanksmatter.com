@@ -12,10 +12,13 @@
   --font-heading: var(--font-family-heading);
   --font-body: var(--font-family-body);
 
-  /* Font sizes */
-  --font-size-lg: 1.25rem;
-  --font-size-base: 1rem;
-  --font-size-sm: 0.875rem;
+  /* Text Styles */
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
 
   /* Line heights */
   --line-height-tight: 1.3;

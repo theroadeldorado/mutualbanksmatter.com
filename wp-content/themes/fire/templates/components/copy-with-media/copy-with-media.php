@@ -32,7 +32,7 @@ $section->add_classes([
       <?php new Fire_Heading($tag ? $tag : 'h2', $title, 'heading-2 text-white'); ?>
     </div>
   <?php endif; ?>
-  <div class="<?php echo $media_position === 'right' ? 'md:col-[col-1/col-6]' : 'md:col-[col-7/col-12]'; ?> space-y-6">
+  <div class="<?php echo $media_position === 'right' ? 'col-[main] md:col-[col-1/col-6]' : 'col-[main] mb-6 lg:mb-0 md:col-[col-7/col-12]'; ?> space-y-6 mb-6 lg:mb-0">
     <?php if ($copy): ?>
       <div class="wizzy text-base text-white">
         <?php echo $copy; ?>
@@ -41,11 +41,11 @@ $section->add_classes([
   </div>
 
   <!-- Right Column: Media -->
-  <div class="<?php echo $media_position === 'right' ? 'md:col-[col-7/col-12]' : 'md:col-[col-1/col-6]'; ?> space-y-6">
+  <div class="<?php echo $media_position === 'right' ? 'col-[main] md:col-[col-7/col-12]' : 'col-[main] md:col-[col-1/col-6]'; ?> space-y-6">
     <!-- Media Container -->
     <?php if ($media_type === 'video' && $vimeo_video_id): ?>
       <!-- Vimeo Video Embed -->
-      <div class="relative w-full rounded-lg overflow-hidden shadow-lg aspect-video">
+      <div class="relative w-full rounded-lg overflow-hidden shadow-lg aspect-video bg-black">
         <iframe
           src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_video_id); ?>?autoplay=1&loop=1&autopause=0&muted=1&background=1"
           class="absolute inset-0 w-full h-full"

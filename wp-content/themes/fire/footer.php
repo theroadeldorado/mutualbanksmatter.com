@@ -38,6 +38,13 @@ $global_scripts = function_exists('get_field') ? get_field('scripts', 'site_sett
   </footer>
 </div><!-- #page -->
 
+<a href="#top" class="fixed bottom-4 right-4 z-[10000] rounded-full bg-light-blue flex items-center justify-center size-16 rotate-180 p-2 text-charcoal">
+  <span class="sr-only">
+    <?php esc_html_e('Back to top', 'fire'); ?>
+  </span>
+  <?php new Fire_SVG('icon--chevron-down'); ?>
+</a>
+
 <div class="pointer-events-none fixed right-0 bottom-0 text-navy">
   <?php new Fire_SVG('icon--bg-logo'); ?>
 </div>

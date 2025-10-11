@@ -27,6 +27,9 @@
     if (property_exists($args, 'item_'. $depth)) {
       $classes[] = $args->{'item_' . $depth};
     }
+
+
+
     return $classes;
   }, 10, 4);
 
@@ -37,7 +40,22 @@
     if (property_exists($args, 'alpine_link_' . $depth)) {
       $atts[':class'] = $args->{'alpine_link_' . $depth};
     }
+
+    $show_as_button = get_field('show_as_button', $item->ID);
+    if($show_as_button && $depth == 0) {
+      $atts['class'] = ' button inline-flex items-center gap-2';
+    }
     return $atts;
+  }, 10, 4);
+
+  // Add chevron-right SVG to button links
+  add_filter('nav_menu_item_title', function($title, $item, $args, $depth) {
+    $show_as_button = get_field('show_as_button', $item->ID);
+    if($show_as_button && $depth == 0) {
+      $svg =  file_get_contents(get_template_directory() . '/theme/assets/media/svgs/icon--chevron-right.svg');
+      $title = $title . $svg;
+    }
+    return $title;
   }, 10, 4);
 
 

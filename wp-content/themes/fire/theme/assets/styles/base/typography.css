@@ -29,21 +29,6 @@
     @apply font-heading text-[1rem] lg:text-[1rem] leading-[1.1] font-light tracking-normal;
   }
 
-  .text-lg {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-tight);
-  }
-
-  .text-base {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-  }
-
-  .text-sm {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-normal);
-  }
-
   .prose,
   .wizzy {
     p,
