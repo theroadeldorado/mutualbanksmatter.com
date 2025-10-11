@@ -12,8 +12,6 @@
 $global_scripts = function_exists('get_field') ? get_field('scripts', 'site_settings') : false;
 $mission = function_exists('get_field') ? get_field('mission', 'site_settings') : false;
 $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_settings') : false;
-
-
 ?>
 
   <footer class="text-white bg-blue py-12 lg:py-20 fire-container">
