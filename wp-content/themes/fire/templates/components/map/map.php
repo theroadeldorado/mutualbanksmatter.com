@@ -20,7 +20,7 @@ $section->add_classes([
 <?php $section->start(); ?>
 <div class="fire-container">
   <?php if ($title): ?>
-    <div class="mb-6">
+    <div class="mb-10 lg:mb-14">
       <?php new Fire_Heading($tag ? $tag : 'h2', $title, 'heading-2 text-white'); ?>
     </div>
   <?php endif; ?>

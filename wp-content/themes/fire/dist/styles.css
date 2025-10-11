@@ -53,6 +53,7 @@
     --leading-normal: 1.5;
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --aspect-video: 16 / 9;
     --default-transition-duration: 150ms;
@@ -439,6 +440,9 @@
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
   }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
@@ -682,6 +686,9 @@
   .auto-rows-min {
     grid-auto-rows: min-content;
   }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -739,6 +746,13 @@
   .gap-\[55px\] {
     gap: 55px;
   }
+  .space-y-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
   .space-y-2 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -789,9 +803,16 @@
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
   }
   .border-r {
     border-right-style: var(--tw-border-style);
@@ -816,6 +837,9 @@
   }
   .border-navy {
     border-color: var(--color-navy);
+  }
+  .border-white {
+    border-color: var(--color-white);
   }
   .\!bg-\[\#01a27f\] {
     background-color: #01a27f !important;
@@ -1119,6 +1143,11 @@
       display: none;
     }
   }
+  .sm\:grid-cols-2 {
+    @media (width >= 100%) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   .md\:col-\[col-1\/col-4\] {
     @media (width >= 768px) {
       grid-column: col-1/col-4;
@@ -1200,6 +1229,11 @@
       letter-spacing: -0.06rem;
     }
   }
+  .lg\:mb-14 {
+    @media (width >= 992px) {
+      margin-bottom: calc(var(--spacing) * 14);
+    }
+  }
   .lg\:block {
     @media (width >= 992px) {
       display: block;
@@ -1208,6 +1242,11 @@
   .lg\:hidden {
     @media (width >= 992px) {
       display: none;
+    }
+  }
+  .lg\:grid-cols-4 {
+    @media (width >= 992px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
   .lg\:grid-cols-6 {
@@ -1319,8 +1358,8 @@
   .heading-1 {
     font-family: var(--font-heading);
     font-size: 3rem;
-    --tw-leading: 1.1em;
-    line-height: 1.1em;
+    --tw-leading: 1.1;
+    line-height: 1.1;
     --tw-font-weight: var(--font-weight-light);
     font-weight: var(--font-weight-light);
     --tw-tracking: var(--tracking-tight);
@@ -1332,8 +1371,8 @@
   .heading-2 {
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    --tw-leading: 1em;
-    line-height: 1em;
+    --tw-leading: 1;
+    line-height: 1;
     --tw-font-weight: var(--font-weight-light);
     font-weight: var(--font-weight-light);
     --tw-tracking: var(--tracking-tight);
@@ -1345,8 +1384,8 @@
   .heading-3 {
     font-family: var(--font-heading);
     font-size: 2rem;
-    --tw-leading: 1.1em;
-    line-height: 1.1em;
+    --tw-leading: 1.1;
+    line-height: 1.1;
     --tw-font-weight: var(--font-weight-light);
     font-weight: var(--font-weight-light);
     --tw-tracking: var(--tracking-tight);
@@ -1358,10 +1397,10 @@
   .heading-4 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    --tw-leading: 1.3em;
-    line-height: 1.3em;
-    --tw-font-weight: var(--font-weight-normal);
-    font-weight: var(--font-weight-normal);
+    --tw-leading: 1.1;
+    line-height: 1.1;
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
     @media (width >= 992px) {
@@ -1371,10 +1410,10 @@
   .heading-5 {
     font-family: var(--font-heading);
     font-size: 1.25rem;
-    --tw-leading: 1.3em;
-    line-height: 1.3em;
-    --tw-font-weight: var(--font-weight-medium);
-    font-weight: var(--font-weight-medium);
+    --tw-leading: 1.1;
+    line-height: 1.1;
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
     @media (width >= 992px) {
@@ -1384,10 +1423,10 @@
   .heading-6 {
     font-family: var(--font-heading);
     font-size: 1rem;
-    --tw-leading: 1.3em;
-    line-height: 1.3em;
-    --tw-font-weight: var(--font-weight-medium);
-    font-weight: var(--font-weight-medium);
+    --tw-leading: 1.1;
+    line-height: 1.1;
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
     @media (width >= 992px) {
