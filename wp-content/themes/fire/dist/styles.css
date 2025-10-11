@@ -614,6 +614,9 @@
   .max-h-screen {
     max-height: 100vh;
   }
+  .min-h-\[600px\] {
+    min-height: 600px;
+  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
