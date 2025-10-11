@@ -2,6 +2,9 @@
 @import './assets/styles/base/theme-variables';
 
 @layer base {
+  body {
+    @apply bg-white! text-black!;
+  }
   #message {
     @apply block!;
   }

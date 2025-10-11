@@ -54,9 +54,49 @@
         'title' => 'Font Style Presets',
         'items' => array(
           array(
-            'title' => 'Example Preset',
+            'title' => 'heading-1',
             'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
-            'classes' => 'test'
+            'classes' => 'heading-1'
+          ),
+          array(
+            'title' => 'heading-2',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-2'
+          ),
+          array(
+            'title' => 'heading-3',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-3'
+          ),
+          array(
+            'title' => 'heading-4',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-4'
+          ),
+          array(
+            'title' => 'heading-5',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-5'
+          ),
+          array(
+            'title' => 'heading-6',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-6'
+          ),
+          array(
+            'title' => 'text-lg',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'text-lg'
+          ),
+          array(
+            'title' => 'text-base',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'text-base'
+          ),
+          array(
+            'title' => 'text-sm',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'text-sm'
           ),
         ),
       ),

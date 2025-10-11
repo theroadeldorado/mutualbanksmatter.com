@@ -14,6 +14,8 @@ if (!defined('FIRE_VERSION')) {
   define('FIRE_VERSION', '1.0.0');
 }
 
+add_filter('user_can_richedit', '__return_true');
+
 if (!function_exists('fire_setup')) :
   /**
    * Sets up theme defaults and registers support for various WordPress features.
@@ -172,6 +174,24 @@ function admin_style() {
 }
 
 add_action('admin_enqueue_scripts', 'admin_style');
+
+/**
+ * Configure ACF JSON save and load paths
+ * This enables ACF to sync field groups from JSON files
+ */
+add_filter('acf/settings/save_json', function ($path) {
+  return get_stylesheet_directory() . '/acf-json';
+});
+
+add_filter('acf/settings/load_json', function ($paths) {
+  // Remove original path
+  unset($paths[0]);
+
+  // Add theme path
+  $paths[] = get_stylesheet_directory() . '/acf-json';
+
+  return $paths;
+});
 
 //include all php files in inc folder
 array_map(function ($filename) {

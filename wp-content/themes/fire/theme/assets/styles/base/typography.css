@@ -1,7 +1,7 @@
 @layer base {
   html,
   body {
-    @apply antialiased font-normal leading-normal bg-charcoal font-normal text-[16px] text-white font-body;
+    @apply antialiased font-normal leading-normal text-[16px] font-body;
     text-rendering: optimizeLegibility;
   }
 
