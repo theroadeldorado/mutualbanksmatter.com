@@ -131,7 +131,7 @@
   }
 
   .prose {
-    @apply px-4;
+    @apply p-4;
 
     [data-columns] {
       @apply border border-gray-500 border-dashed p-4;

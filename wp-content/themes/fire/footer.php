@@ -10,29 +10,45 @@
  */
 
 $global_scripts = function_exists('get_field') ? get_field('scripts', 'site_settings') : false;
+$mission = function_exists('get_field') ? get_field('mission', 'site_settings') : false;
+$contact_info = function_exists('get_field') ? get_field('contact_info', 'site_settings') : false;
+
 
 ?>
 
-  <footer class="text-white bg-gray-500 fire-container">
-    <div>
-      <div>
-        <?php
-          wp_nav_menu(
-            array(
-              'container'       => false,
-              'depth'           => 2,
-              'theme_location'  => 'footer',
-              'menu_class'      => 'menu_class',
-              'link_class'      => 'link_class',
-              'sub_link_class' => 'sub_link_class',
-              'sub_menu_class' => 'sub_menu_class',
-            )
-          );
-        ?>
-      </div>
-      <?php echo sprintf('© %s %s', date('Y'), get_bloginfo('name')); ?>
-      <div class="flex items-center justify-start space-x-2">
-        <?php require get_template_directory() . '/templates/components/social-links/social-links.php';?>
+  <footer class="text-white bg-blue py-12 lg:py-20 fire-container">
+    <div class="col-[col-1]">
+      <a href="<?php echo home_url(); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/theme/assets/media/images/logo-mark.png" alt="<?php echo get_bloginfo('name'); ?>" class="w-16 h-auto">
+      </a>
+    </div>
+    <div class="col-[col-2/col-7] text-base">
+      <?php if ($mission): ?>
+        <div class="wizzy mb-6">
+          <?php echo $mission; ?>
+        </div>
+        <p><?php echo sprintf('© %s %s', date('Y'), get_bloginfo('name')); ?></p>
+      <?php endif; ?>
+    </div>
+    <div class="col-[col-8/col-9]">
+      <?php
+        wp_nav_menu(
+          array(
+            'container'       => false,
+            'depth'           => 1,
+            'menu_class'      => 'flex flex-col gap-1',
+            'link_0'      => 'text-white underline underline-offset-1 decoration-1 hover:no-underline focus:no-underline',
+          )
+        );
+      ?>
+    </div>
+    <div class="col-[col-10/col-12]">
+      <div class="flex justify-end">
+        <?php if($contact_info): ?>
+          <div class="text-base wizzy">
+            <?php echo $contact_info; ?>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </footer>

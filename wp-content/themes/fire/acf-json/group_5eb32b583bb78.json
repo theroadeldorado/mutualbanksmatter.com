@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5ebb05686f039",
-            "label": "Social",
+            "label": "Footer",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -21,11 +21,32 @@
             "selected": 0
         },
         {
-            "key": "field_5ebb03e4ee87d",
-            "label": "Social Links",
-            "name": "social_links",
+            "key": "field_68e9e3b54e8ec",
+            "label": "Mission",
+            "name": "mission",
             "aria-label": "",
-            "type": "group",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "smaller-wizzy",
+                "id": ""
+            },
+            "default_value": "The <strong>Mutuals Matter Association<\/strong> aims to shine a spotlight on what sets mutual banks apart from other financial institutions.",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_68e9e3fe4e8ed",
+            "label": "Contact Info",
+            "name": "contact_info",
+            "aria-label": "",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,187 +55,12 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_5ebb03f0ee87e",
-                    "label": "Facebook",
-                    "name": "facebook",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5ebb0457ee880",
-                    "label": "X",
-                    "name": "x",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5ebb046bee881",
-                    "label": "LinkedIn",
-                    "name": "linkedin",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5ebb0478ee882",
-                    "label": "YouTube",
-                    "name": "youtube",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5ebb044bee87f",
-                    "label": "Instagram",
-                    "name": "instagram",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5ebb04f9ee883",
-                    "label": "Pinterest",
-                    "name": "pinterest",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_67fec1ee2b44a",
-                    "label": "TikTok",
-                    "name": "tiktok",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": ""
-                }
-            ]
-        },
-        {
-            "key": "field_5efe2db0341c7",
-            "label": "Bugherd",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_5efe2ddb341c9",
-            "label": "Bugherd Enabled",
-            "name": "bugherd_enabled",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "15",
-                "class": "",
-                "id": ""
-            },
-            "message": "Enable Bugherd for all site visitors?",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5efe2dba341c8",
-            "label": "Bugherd API Key",
-            "name": "bugherd_api_key",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "85",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
+            "default_value": "Mutuals Matter Association\r\n16 Foundry Street\r\nPO Box 2826\r\nConcord, NH 03302\r\n603 279-9160",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 6,
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "new_lines": "br"
         },
         {
             "key": "field_66b62dd87af68",
@@ -329,5 +175,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758992467
+    "display_title": "",
+    "modified": 1760158825
 }

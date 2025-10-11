@@ -9,18 +9,10 @@
     @apply block!;
   }
 
-  body:not(.post-type-post) {
-    .mce-edit-area {
-      iframe {
-        @apply h-auto! min-h-[350px]!;
-      }
-    }
-  }
-
   .small-wizzy {
     & .mce-edit-area {
       & iframe {
-        @apply h-auto! min-h-[200px]! max-h-[200px]!;
+        @apply h-[200px]! min-h-[200px]! max-h-[200px]!;
       }
     }
   }
@@ -28,7 +20,7 @@
   .smaller-wizzy {
     & .mce-edit-area {
       & iframe {
-        @apply h-auto! min-h-[120px]! max-h-[120px]!;
+        @apply h-[120px]! min-h-[120px]! max-h-[120px]!;
       }
     }
   }

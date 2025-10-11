@@ -24,18 +24,10 @@
   #message {
     display: block !important;
   }
-  body:not(.post-type-post) {
-    .mce-edit-area {
-      iframe {
-        height: auto !important;
-        min-height: 350px !important;
-      }
-    }
-  }
   .small-wizzy {
     & .mce-edit-area {
       & iframe {
-        height: auto !important;
+        height: 200px !important;
         max-height: 200px !important;
         min-height: 200px !important;
       }
@@ -44,7 +36,7 @@
   .smaller-wizzy {
     & .mce-edit-area {
       & iframe {
-        height: auto !important;
+        height: 120px !important;
         max-height: 120px !important;
         min-height: 120px !important;
       }
