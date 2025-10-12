@@ -56,7 +56,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "table",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -215,5 +215,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760148276
+    "modified": 1760163415
 }

@@ -1,6 +1,6 @@
 @layer components {
   a {
-    @apply text-gray-500 underline;
+    @apply underline;
     @apply transition-all duration-200 cursor-pointer;
 
     &:focus-visible {

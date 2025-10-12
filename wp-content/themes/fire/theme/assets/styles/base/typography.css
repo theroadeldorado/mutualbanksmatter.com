@@ -42,6 +42,10 @@
       @apply mb-6 last:mb-0;
     }
 
+    a:not(.button, .button-outline, .button-charcoal, .link) {
+      @apply underline decoration-1 underline-offset-1 hover:no-underline;
+    }
+
     .heading-1,
     .heading-2,
     .heading-3,
