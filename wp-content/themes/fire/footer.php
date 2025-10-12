@@ -14,7 +14,7 @@ $mission = function_exists('get_field') ? get_field('mission', 'site_settings') 
 $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_settings') : false;
 ?>
 
-  <footer class="text-white bg-blue py-12 lg:py-20 fire-container">
+  <footer class="text-white py-12 lg:py-20 fire-container <?php echo is_home() ? 'bg-blue' : 'bg-charcoal'; ?>">
     <div class="col-[col-1]">
       <a href="<?php echo home_url(); ?>">
         <img src="<?php echo get_template_directory_uri(); ?>/theme/assets/media/images/logo-mark.png" alt="<?php echo get_bloginfo('name'); ?>" class="w-16 h-auto">
@@ -59,9 +59,11 @@ $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_s
   <?php new Fire_SVG('icon--chevron-down'); ?>
 </a>
 
-<div class="pointer-events-none fixed right-0 bottom-0 text-navy">
-  <?php new Fire_SVG('icon--bg-logo'); ?>
-</div>
+<?php if (is_home()): ?>
+  <div class="pointer-events-none fixed right-0 bottom-0 text-navy">
+    <?php new Fire_SVG('icon--bg-logo'); ?>
+  </div>
+<?php endif; ?>
 
 <?php
   // Check if environment is local

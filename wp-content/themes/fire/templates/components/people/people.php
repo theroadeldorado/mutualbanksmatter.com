@@ -34,8 +34,8 @@ $section->add_classes([
         ?>
           <div class="space-y-4 rounded-xl overflow-hidden p-5 border-2 border-white text-white">
             <?php if ($image_id): ?>
-              <div class="rounded-lg overflow-hidden">
-                <?php echo ResponsivePics::get_picture($image_id, 'sm:600 600|f, md:375 375|f, lg:300 300|f, xl:400 400|f', 'lazyload-effect', true, true); ?>
+              <div class="rounded-lg overflow-hidden w-full">
+                <?php echo ResponsivePics::get_picture($image_id, 'sm:600 600|f, md:375 375|f, lg:300 300|f, xl:400 400|f', 'lazyload-effect full-image', true, true); ?>
               </div>
             <?php endif; ?>
 

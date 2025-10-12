@@ -6,4 +6,88 @@
       content: '*';
     }
   }
+
+  .gform_wrapper {
+    @apply w-full;
+
+    .gform_label {
+      @apply block text-base;
+    }
+
+    .gfield {
+      @apply w-full mb-6;
+    }
+
+    [type='text'],
+    input:where(:not([type])),
+    [type='email'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='week'],
+    [multiple],
+    textarea,
+    select {
+      @apply bg-transparent border-0 border-b-2 border-white py-2 px-0 w-full text-lg placeholder:text-gray-500;
+      outline: none !important;
+      box-shadow: none !important;
+
+      &:focus,
+      &:focus-visible {
+        @apply outline-none shadow-none border-b-light-blue;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    textarea {
+      @apply max-h-[150px];
+    }
+
+    .gform_submission_error,
+    .gfield_validation_message {
+      @apply text-red-400 text-sm;
+    }
+
+    .gfield_error {
+      [type='text'],
+      input:where(:not([type])),
+      [type='email'],
+      [type='url'],
+      [type='password'],
+      [type='number'],
+      [type='date'],
+      [type='datetime-local'],
+      [type='month'],
+      [type='search'],
+      [type='tel'],
+      [type='time'],
+      [type='week'],
+      [multiple],
+      textarea,
+      select {
+        @apply border-b-red-400;
+      }
+
+      .gfield_label {
+        @apply text-red-400;
+      }
+    }
+
+    .gfield--type-captcha {
+      .gfield_label {
+        @apply hidden;
+      }
+    }
+
+    .gform_confirmation_message {
+      @apply text-center text-lg;
+    }
+  }
 }

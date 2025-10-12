@@ -6,22 +6,23 @@
   .site {
     @apply flex flex-col min-h-screen;
 
-    &-main {
+    .site-main {
       @apply flex-grow;
     }
   }
 
   body {
-    @apply bg-charcoal text-white;
-  }
+    @apply bg-charcoal text-white bg-repeat bg-cover bg-center bg-fixed;
+    background-image: url('../../media/images/bg-image.png');
 
-  img {
-    @apply max-w-full;
+    &.home {
+      @apply bg-none;
+    }
   }
 
   picture.lazyload-effect {
     img {
-      @apply transition-opacity duration-750 ease-in-out;
+      @apply transition-opacity duration-500 ease-in-out;
 
       &.lazyload,
       &.lazyloading {
@@ -32,6 +33,17 @@
         @apply opacity-100;
       }
     }
+  }
+
+  .full-image {
+    @apply object-cover object-center w-full h-full;
+    * {
+      @apply object-cover object-center w-full h-full;
+    }
+  }
+
+  img {
+    @apply max-w-full;
   }
 
   svg {

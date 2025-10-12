@@ -62,24 +62,12 @@ $section->add_classes([
       </div>
     <?php endif; ?>
 
-    <!-- Optional Media Content Below -->
-    <?php if ($media_content):
-      $media_heading = $media_content['heading'];
-      $media_copy = $media_content['copy'];
-    ?>
-      <?php if ($media_heading || $media_copy): ?>
+    <?php if ($media_content): $media_copy = $media_content['copy']; ?>
+      <?php if ($media_copy): ?>
         <div class="space-y-4">
-          <?php if ($media_heading): ?>
-            <div class="text-base text-white">
-              <?php echo wp_kses_post($media_heading); ?>
-            </div>
-          <?php endif; ?>
-
-          <?php if ($media_copy): ?>
-            <div class="wizzy text-base text-white">
-              <?php echo $media_copy; ?>
-            </div>
-          <?php endif; ?>
+          <div class="wizzy text-base text-white">
+            <?php echo $media_copy; ?>
+          </div>
         </div>
       <?php endif; ?>
     <?php endif; ?>

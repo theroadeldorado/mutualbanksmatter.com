@@ -1592,24 +1592,29 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    &-main {
+    .site-main {
       flex-grow: 1;
     }
   }
   body {
     background-color: var(--color-charcoal);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
     color: var(--color-white);
-  }
-  img {
-    max-width: 100%;
+    background-image: url(d4f94a00542716db1980beef6890d6c1.png);
+    &.home {
+      background-image: none;
+    }
   }
   picture.lazyload-effect {
     img {
       transition-property: opacity;
       transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
       transition-duration: var(--tw-duration, var(--default-transition-duration));
-      --tw-duration: 750ms;
-      transition-duration: 750ms;
+      --tw-duration: 500ms;
+      transition-duration: 500ms;
       --tw-ease: var(--ease-in-out);
       transition-timing-function: var(--ease-in-out);
       &.lazyload, &.lazyloading {
@@ -1619,6 +1624,21 @@
         opacity: 100%;
       }
     }
+  }
+  .full-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    * {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  img {
+    max-width: 100%;
   }
   svg {
     height: auto;
@@ -2213,6 +2233,71 @@
       margin-left: calc(var(--spacing) * 1);
       color: var(--color-red-400);
       content: '*';
+    }
+  }
+  .gform_wrapper {
+    width: 100%;
+    .gform_label {
+      display: block;
+      font-size: var(--text-base);
+      line-height: var(--tw-leading, var(--text-base--line-height));
+    }
+    .gfield {
+      margin-bottom: calc(var(--spacing) * 6);
+      width: 100%;
+    }
+    [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+      width: 100%;
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+      border-bottom-style: var(--tw-border-style);
+      border-bottom-width: 2px;
+      border-color: var(--color-white);
+      background-color: transparent;
+      padding-inline: calc(var(--spacing) * 0);
+      padding-block: calc(var(--spacing) * 2);
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+      &::placeholder {
+        color: var(--color-gray-500);
+      }
+      outline: none !important;
+      box-shadow: none !important;
+      &:focus, &:focus-visible {
+        border-bottom-color: var(--color-light-blue);
+        --tw-shadow: 0 0 #0000;
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+        --tw-outline-style: none;
+        outline-style: none;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    }
+    textarea {
+      max-height: 150px;
+    }
+    .gform_submission_error, .gfield_validation_message {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+      color: var(--color-red-400);
+    }
+    .gfield_error {
+      [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+        border-bottom-color: var(--color-red-400);
+      }
+      .gfield_label {
+        color: var(--color-red-400);
+      }
+    }
+    .gfield--type-captcha {
+      .gfield_label {
+        display: none;
+      }
+    }
+    .gform_confirmation_message {
+      text-align: center;
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
 }
