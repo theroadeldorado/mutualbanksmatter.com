@@ -1,5 +1,5 @@
 @utility button {
-  @apply inline-flex items-center gap-2 px-6 py-2;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-2;
   @apply rounded-md text-lg;
   @apply font-normal text-charcoal no-underline;
   @apply transition-all duration-200 cursor-pointer;

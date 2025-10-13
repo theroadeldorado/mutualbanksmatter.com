@@ -3,7 +3,7 @@
 
 @layer base {
   body {
-    @apply bg-[#f0f0f1]! text-black!;
+    @apply bg-[#f0f0f1]! bg-none! text-black!;
   }
   #message {
     @apply block!;

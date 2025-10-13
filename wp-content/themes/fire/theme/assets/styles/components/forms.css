@@ -7,6 +7,61 @@
     }
   }
 
+  /* Login Section Forms */
+  .login-section,
+  .login-form,
+  .reset-form {
+    .form-field {
+      @apply w-full mb-6;
+    }
+
+    label {
+      @apply block text-base;
+    }
+
+    [type='text'],
+    input:where(:not([type])),
+    [type='email'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='week'],
+    [multiple],
+    textarea,
+    select {
+      @apply bg-transparent border-0 border-b-2 border-white py-2 px-0 w-full text-lg text-white placeholder:text-gray-400;
+      outline: none !important;
+      box-shadow: none !important;
+
+      &:focus,
+      &:focus-visible {
+        @apply outline-none shadow-none border-b-light-blue;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    /* Alpine.js cloak */
+    [x-cloak] {
+      @apply hidden;
+    }
+  }
+
+  .button-light-blue {
+    @apply button bg-light-blue text-charcoal ring-light-blue ring-1;
+
+    &:hover,
+    &:active {
+      @apply bg-white text-charcoal ring-white;
+    }
+  }
+
   .gform_wrapper {
     @apply w-full;
 

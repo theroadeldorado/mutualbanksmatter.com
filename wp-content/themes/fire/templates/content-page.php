@@ -10,7 +10,9 @@
   $post_type = get_post_type();
   $layout_type = get_row_layout();
 ?>
-
+  <?php if($block_count == 1 && $layout_type !== 'home_hero'): ?>
+    <div class="h-10 lg:h-20" aria-hidden="true"></div>
+  <?php endif; ?>
   <?php $fire_section = new Fire_Section($block_count, $layout_type); ?>
   <?php ACF_Layout::render(get_row_layout(), $block_count, $fire_section); $block_count++; ?>
 

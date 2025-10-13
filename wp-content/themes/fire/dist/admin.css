@@ -19,6 +19,7 @@
 @layer base {
   body {
     background-color: #f0f0f1 !important;
+    background-image: none !important;
     color: var(--color-black) !important;
   }
   #message {
