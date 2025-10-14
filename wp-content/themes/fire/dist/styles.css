@@ -1684,7 +1684,7 @@
       flex-grow: 1;
     }
   }
-  body {
+  body:not(.mce-edit-area):not(.mce-content-body) {
     background-color: var(--color-charcoal);
     background-size: cover;
     background-attachment: fixed;

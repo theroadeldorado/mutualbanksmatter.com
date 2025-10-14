@@ -2,9 +2,11 @@
 @import './assets/styles/base/theme-variables';
 
 @layer base {
-  body {
+  body,
+  .mce-edit-area {
     @apply bg-[#f0f0f1]! bg-none! text-black!;
   }
+
   #message {
     @apply block!;
   }

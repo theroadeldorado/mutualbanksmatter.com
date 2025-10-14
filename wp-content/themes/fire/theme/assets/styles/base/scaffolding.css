@@ -11,7 +11,7 @@
     }
   }
 
-  body {
+  body:not(.mce-edit-area):not(.mce-content-body) {
     @apply bg-charcoal text-white bg-repeat bg-cover bg-center bg-fixed;
     background-image: url('../../media/images/bg-image.png');
 
