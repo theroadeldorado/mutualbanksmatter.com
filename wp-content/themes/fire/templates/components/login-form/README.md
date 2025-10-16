@@ -17,6 +17,7 @@ A full-width section with media background (image or Vimeo video), login form wi
 - **Vimeo Video ID**: Text field for Vimeo video ID (conditional on media type)
 - **Copy**: WYSIWYG editor for content
 - **Sign Up Link**: Link field for the sign up button
+- **Redirect After Login**: Link field for the page to redirect to after successful login (e.g., Assets page)
 
 ## Technical Details
 
@@ -41,9 +42,11 @@ The password reset functionality uses Alpine.js to toggle between login and rese
 
 ### WordPress Integration
 
-- Login form posts to `wp_login_url()`
+- Login form posts to `wp_login_url()` with redirect parameter
 - Password reset form posts to `wp_lostpassword_url()`
 - Forms use standard WordPress authentication handling
+- If a user is already logged in and visits the page, they are automatically redirected to the specified "Redirect After Login" page
+- After successful login, users are redirected to the URL specified in the "Redirect After Login" field
 
 ## Layout Structure
 

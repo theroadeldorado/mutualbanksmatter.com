@@ -1,11 +1,57 @@
 {
     "key": "group_68e9d2383f8e0",
-    "title": "Show as button",
+    "title": "Menu Item Options",
     "fields": [
         {
             "key": "field_68e9d2387a253",
             "label": "Show as button",
             "name": "show_as_button",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_68f04d8112fa8",
+            "label": "Show for",
+            "name": "show_for",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "both": "Both",
+                "guests": "Guests Only",
+                "users": "Logged in Users Only"
+            },
+            "default_value": "both",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_68f04da912fa9",
+            "label": "Show for Logged In Users Only",
+            "name": "users_only",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -43,5 +89,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760154201
+    "modified": 1760579224
 }

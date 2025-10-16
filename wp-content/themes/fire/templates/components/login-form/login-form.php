@@ -14,9 +14,16 @@ $image_id = get_sub_field('image');
 $vimeo_video_id = get_sub_field('vimeo_video_id');
 $copy = get_sub_field('copy');
 $sign_up_link = get_sub_field('sign_up_link');
+$redirect_after_login = get_sub_field('redirect_after_login');
 
 // Get theme logo path
 $logo_path = get_template_directory_uri() . '/theme/assets/media/images/logo.png';
+
+// If user is already logged in, redirect them to the specified page
+if (is_user_logged_in() && $redirect_after_login) {
+  wp_redirect($redirect_after_login);
+  exit;
+}
 
 // Add section classes
 $section->add_classes([
@@ -68,41 +75,45 @@ $section->add_classes([
       <?php endif; ?>
     </div>
 
-    <div class="col-[main] md:col-[col-5/col-8] lg:col-[col-9/col-12] content-center">
-      <form method="post" action="<?php echo esc_url(wp_login_url()); ?>" class="login-form space-y-6">
-        <div class="form-field mb-6">
-          <label for="user_login" class="block text-base text-white">Email</label>
-          <input
-            type="text"
-            name="log"
-            id="user_login"
-            placeholder="Email"
-            class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
-            value=""
-            size="20"
-            required
-          />
-        </div>
+     <div class="col-[main] md:col-[col-5/col-8] lg:col-[col-9/col-12] content-center">
+       <form method="post" action="<?php echo esc_url(wp_login_url($redirect_after_login)); ?>" class="login-form space-y-6">
+         <div class="form-field mb-6">
+           <label for="user_login" class="block text-base text-white">Email</label>
+           <input
+             type="text"
+             name="log"
+             id="user_login"
+             placeholder="Email"
+             class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
+             value=""
+             size="20"
+             required
+           />
+         </div>
 
-        <div class="form-field mb-6">
-          <label for="user_pass" class="block text-base text-white">Password</label>
-          <input
-            type="password"
-            name="pwd"
-            id="user_pass"
-            placeholder="Password"
-            class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
-            value=""
-            size="20"
-            required
-          />
-        </div>
+         <div class="form-field mb-6">
+           <label for="user_pass" class="block text-base text-white">Password</label>
+           <input
+             type="password"
+             name="pwd"
+             id="user_pass"
+             placeholder="Password"
+             class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
+             value=""
+             size="20"
+             required
+           />
+         </div>
 
-        <div class="form-field mb-6">
-          <button type="submit" class="button-light-blue w-full text-center">
-            Log In
-          </button>
-        </div>
+         <?php if ($redirect_after_login): ?>
+           <input type="hidden" name="redirect_to" value="<?php echo esc_url($redirect_after_login); ?>" />
+         <?php endif; ?>
+
+         <div class="form-field mb-6">
+           <button type="submit" class="button-light-blue w-full text-center">
+             Log In
+           </button>
+         </div>
 
         <div class="flex justify-between items-center text-sm text-white">
           <?php if ($sign_up_link): ?>

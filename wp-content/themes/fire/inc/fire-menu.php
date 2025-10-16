@@ -18,7 +18,8 @@
   function fire_register_nav_menu(){
     register_nav_menus( array(
       'primary' => __( 'Primary', 'fire' ),
-      'footer'  => __( 'Footer', 'fire' )
+      'footer'  => __( 'Footer', 'fire' ),
+      'account' => __( 'Account', 'fire' )
     ) );
   }
   add_action( 'after_setup_theme', 'fire_register_nav_menu', 0 );
@@ -26,6 +27,13 @@
   add_filter('nav_menu_css_class', function($classes, $menu_item, $args, $depth) {
     if (property_exists($args, 'item_'. $depth)) {
       $classes[] = $args->{'item_' . $depth};
+    }
+    $show_for = get_field('show_for', $menu_item->ID);
+    if($show_for === 'guests' && is_user_logged_in()) {
+      $classes[] = 'hidden';
+    }
+    if($show_for === 'users' && !is_user_logged_in()) {
+      $classes[] = 'hidden';
     }
 
 
@@ -45,6 +53,7 @@
     if($show_as_button && $depth == 0) {
       $atts['class'] = ' button inline-flex items-center gap-2';
     }
+
     return $atts;
   }, 10, 4);
 

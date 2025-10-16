@@ -47,7 +47,7 @@ $section->add_classes([
       <!-- Vimeo Video Embed -->
       <div class="relative w-full rounded-lg overflow-hidden shadow-lg aspect-video bg-black">
         <iframe
-          src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_video_id); ?>?autoplay=1&loop=1&autopause=0&muted=1&background=1"
+          src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_video_id); ?>"
           class="absolute inset-0 w-full h-full"
           frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
