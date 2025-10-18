@@ -124,53 +124,14 @@ function fire_create_sample_asset_categories() {
 }
 
 /**
- * Display setup instructions in admin
- */
-function fire_portal_setup_admin_notice() {
-  $screen = get_current_screen();
-
-  // Only show on dashboard
-  if ($screen->id !== 'dashboard') {
-    return;
-  }
-
-  // Check if pages exist
-  $assets_page = get_page_by_path('assets');
-  $profile_page = get_page_by_path('profile');
-
-  if (!$assets_page || !$profile_page) {
-    ?>
-    <div class="notice notice-info">
-      <h2>Customer Portal Setup</h2>
-      <p>The customer portal has been installed but needs pages created.</p>
-      <p><strong>Next Steps:</strong></p>
-      <ol>
-        <li>Go to <strong>Custom Fields → Sync</strong> to sync the updated user fields</li>
-        <li>Create two pages:
-          <ul>
-            <li><strong>Assets</strong> (slug: assets) with template "Assets Portal"</li>
-            <li><strong>Profile</strong> (slug: profile) with template "Profile Portal"</li>
-          </ul>
-        </li>
-        <li>Run <code>npm run build</code> to compile the portal styles</li>
-        <li>See <code>PORTAL-SETUP.md</code> for complete documentation</li>
-      </ol>
-    </div>
-    <?php
-  }
-}
-// Uncomment to show setup notice on dashboard:
-// add_action('admin_notices', 'fire_portal_setup_admin_notice');
-
-/**
  * Run the portal setup
  *
  * UNCOMMENT THE LINE BELOW TO RUN THE SETUP ONCE
  * Then comment it back out or delete this file after setup is complete
  */
 // Uncomment to auto-create portal pages on next admin page load:
-// add_action('admin_init', 'fire_create_portal_pages');
+add_action('admin_init', 'fire_create_portal_pages');
 
 // Uncomment to auto-create asset categories on next admin page load:
-// add_action('admin_init', 'fire_create_sample_asset_categories');
+add_action('admin_init', 'fire_create_sample_asset_categories');
 
