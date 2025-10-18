@@ -11,6 +11,9 @@
 $tag = get_sub_field('tag');
 $title = get_sub_field('title');
 
+// Get locations from custom post type
+$locations = fire_get_locations_for_map();
+
 // Add custom classes to the section wrapper
 $section->add_classes([
   'map'
@@ -18,7 +21,7 @@ $section->add_classes([
 ?>
 
 <?php $section->start(); ?>
-<div class="fire-container py-16 lg:py-24" x-data="mapComponent()">
+<div class="fire-container py-16 lg:py-24" x-data="mapComponent(<?php echo esc_attr(wp_json_encode($locations)); ?>)">
   <?php if ($title): ?>
     <div class="mb-10 lg:mb-14">
       <?php new Fire_Heading($tag ? $tag : 'h2', $title, 'heading-2 text-white'); ?>
@@ -42,19 +45,8 @@ $section->add_classes([
       if (mapContainer && mapContainer._x_dataStack && locator) {
         const component = mapContainer._x_dataStack[0];
         if (component && component.configuration) {
-          console.log('Applying configuration from Alpine component...');
-          console.log('Configuration:', {
-            locationCount: component.configuration.locations.length,
-            mapId: component.configuration.mapOptions.mapId,
-            apiKey: component.configuration.mapsApiKey ? 'Set' : 'Missing'
-          });
           locator.configureFromQuickBuilder(component.configuration);
-          console.log('Configuration applied. Map should render now.');
-        } else {
-          console.error('Component or configuration not found', { component, hasConfig: !!component?.configuration });
         }
-      } else {
-        console.error('Required elements not found', { mapContainer: !!mapContainer, locator: !!locator });
       }
     });
   </script>

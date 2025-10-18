@@ -1,0 +1,184 @@
+{
+  "key": "group_location_fields",
+  "title": "Location Details",
+  "fields": [
+    {
+      "key": "field_address_search",
+      "label": "Address Search",
+      "name": "address_search",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Enter full address here and click search to auto-fill all fields below",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "fire-address-search-wrapper",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "e.g., 3910 Tieton Dr, Yakima, WA 98902, USA",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_search_button",
+      "label": "Search & Auto-Fill",
+      "name": "search_button",
+      "aria-label": "",
+      "type": "message",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "fire-search-button-wrapper",
+        "id": ""
+      },
+      "message": "<button type=\"button\" class=\"button button-primary\" id=\"fire-address-search-button\" style=\"margin-bottom: 20px;\">Search & Auto-Fill Address</button><span class=\"fire-search-status\"></span>",
+      "new_lines": "",
+      "esc_html": 0
+    },
+    {
+      "key": "field_manual_divider",
+      "label": "",
+      "name": "",
+      "aria-label": "",
+      "type": "message",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "<h4 style=\"margin: 10px 0;\">Or enter manually:</h4>",
+      "new_lines": "",
+      "esc_html": 0
+    },
+    {
+      "key": "field_address_line_1",
+      "label": "Address Line 1",
+      "name": "address_line_1",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Street address (e.g., 3910 Tieton Dr)",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_address_line_2",
+      "label": "Address Line 2",
+      "name": "address_line_2",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "City, State, ZIP (e.g., Yakima, WA 98902, USA)",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_latitude",
+      "label": "Latitude",
+      "name": "latitude",
+      "aria-label": "",
+      "type": "number",
+      "instructions": "Will be auto-filled when you use \"Search & Auto-fill Address\"",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "min": -90,
+      "max": 90,
+      "placeholder": "",
+      "step": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_longitude",
+      "label": "Longitude",
+      "name": "longitude",
+      "aria-label": "",
+      "type": "number",
+      "instructions": "Will be auto-filled when you use \"Search & Auto-fill Address\"",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "min": -180,
+      "max": 180,
+      "placeholder": "",
+      "step": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_website_url",
+      "label": "Website URL",
+      "name": "website_url",
+      "aria-label": "",
+      "type": "url",
+      "instructions": "Full website URL with UTM parameters",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "https://www.example.com/?utm_source=mutualbanksmatter&utm_medium=referral&utm_campaign=find_location"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "location"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 1,
+  "acf_version": "6.0.0",
+  "local": "json",
+  "modified": 1729267200
+}

@@ -1,18 +1,14 @@
-import { locationsData } from './locations-data';
-
-export default (variables) => ({
-  variables,
+export default (locationsData = []) => ({
   locations: [],
   configuration: null,
 
   init() {
-    this.setupLocations();
+    this.setupLocations(locationsData);
     this.setupConfiguration();
-    console.log('Map component initialized with', this.locations.length, 'locations');
   },
 
-  setupLocations() {
-    this.locations = locationsData;
+  setupLocations(data) {
+    this.locations = data;
     this.locations = this.locations.sort(this.dynamicSort('title'));
   },
 
