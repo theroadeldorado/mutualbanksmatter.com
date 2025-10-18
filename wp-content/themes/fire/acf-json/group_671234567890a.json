@@ -1,0 +1,95 @@
+{
+  "key": "group_671234567890a",
+  "title": "Customer Status",
+  "fields": [
+    {
+      "key": "field_671234567890b",
+      "label": "Active Customer",
+      "name": "active_customer",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "Toggle to activate or deactivate this customer's access. Active customers have full access to customer-only content.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 1,
+      "allow_in_bindings": 0,
+      "ui_on_text": "Active",
+      "ui_off_text": "Inactive",
+      "ui": 1
+    },
+    {
+      "key": "field_671234567890c",
+      "label": "Active Till",
+      "name": "active_till",
+      "aria-label": "",
+      "type": "date_picker",
+      "instructions": "Optional: Set a date when this customer's access will automatically expire. Leave blank for indefinite access.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_671234567890b",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "display_format": "F j, Y",
+      "return_format": "Y-m-d",
+      "first_day": 0,
+      "allow_in_bindings": 0
+    },
+    {
+      "key": "field_671234567890d",
+      "label": "Bank Affiliation",
+      "name": "bank_affiliation",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Enter the name of the mutual bank this customer is affiliated with.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "e.g., Mutual Bank",
+      "prepend": "",
+      "append": "",
+      "allow_in_bindings": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "user_form",
+        "operator": "==",
+        "value": "all"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Manage customer active status and expiration dates",
+  "show_in_rest": 0,
+  "display_title": "",
+  "modified": 1729180800
+}
