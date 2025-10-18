@@ -47,10 +47,20 @@ $count = 0;
       $active = $link == get_permalink();
       $has_children = !empty($item->children);
       $show_as_button = get_field('show_as_button', $item->ID);
+      $show_for = get_field('show_for', $item->ID);
       $count++;
+      
+      // Add hidden class based on login status
+      $hidden_class = '';
+      if($show_for === 'guests' && is_user_logged_in()) {
+        $hidden_class = 'hidden';
+      }
+      if($show_for === 'users' && !is_user_logged_in()) {
+        $hidden_class = 'hidden';
+      }
     ?>
       <?php if($link):?>
-        <li class="transition-all ease-in-out <?php echo $has_children ? 'has-kids' : 'no-kids'; ?>"
+        <li class="transition-all ease-in-out <?php echo $has_children ? 'has-kids' : 'no-kids'; ?> <?php echo $hidden_class; ?>"
             x-data="{ open: false }"
             :class="{'-translate-x-12 opacity-0 duration-200': !navOpen, 'delay-<?php echo $count;?>00 duration-500': navOpen }">
 
@@ -87,8 +97,18 @@ $count = 0;
             >
               <?php foreach($item->children as $child):
                 $child_active = $child->url == get_permalink();
+                $child_show_for = get_field('show_for', $child->ID);
+                
+                // Add hidden class based on login status
+                $child_hidden_class = '';
+                if($child_show_for === 'guests' && is_user_logged_in()) {
+                  $child_hidden_class = 'hidden';
+                }
+                if($child_show_for === 'users' && !is_user_logged_in()) {
+                  $child_hidden_class = 'hidden';
+                }
               ?>
-                <li class="first:pt-4">
+                <li class="first:pt-4 <?php echo $child_hidden_class; ?>">
                   <a
                     href="<?php echo $child->url; ?>"
                     target="<?php echo $child->target;?>"
