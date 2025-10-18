@@ -1,6 +1,6 @@
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth selection:bg-light-blue selection:text-white;
   }
 
   .site {

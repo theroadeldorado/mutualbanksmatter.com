@@ -39,7 +39,7 @@
     [multiple],
     textarea,
     select {
-      @apply bg-transparent border-0 border-b-2 border-white py-2 px-0 w-full text-lg text-white placeholder:text-gray-400;
+      @apply bg-transparent border-0 border-b-2 border-white py-2 px-0 w-full text-lg text-white placeholder:text-gray-300;
       outline: none !important;
       box-shadow: none !important;
 

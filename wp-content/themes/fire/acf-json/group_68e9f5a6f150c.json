@@ -21,6 +21,30 @@
             "selected": 0
         },
         {
+            "key": "field_68f3c70764fc3",
+            "label": "Layout",
+            "name": "layout",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "2-col": "Form on right",
+                "1-col": "Stacked and centered"
+            },
+            "default_value": "2-col",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_68e9f5a6f25d2",
             "label": "Heading",
             "name": "heading",
@@ -142,5 +166,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760163532
+    "modified": 1760806789
 }
