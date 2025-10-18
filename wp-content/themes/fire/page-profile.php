@@ -124,7 +124,7 @@ $days_remaining = fire_get_days_until_expiration();
       <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9] flex gap-6 justify-between">
         <h1 class="text-4xl lg:text-5xl font-bold mb-6 shrink-0">Your profile</h1>
         <!-- account status -->
-        <div class="py-2 px-4 mb-6 rounded-lg flex flex-col border-2 transition-all duration-300 <?php echo $is_active ? 'border-green-400' : 'border-red-400'; ?>">
+        <div class="py-2 px-4 mb-6 rounded-lg flex flex-col border-2 transition-all duration-300 <?php echo $is_active ? 'border-green-400' : 'border-red-300'; ?>">
           <div class="flex items-center gap-2">
             <div class="flex items-center gap-3">
               <?php if ($is_active): ?>
@@ -135,7 +135,7 @@ $days_remaining = fire_get_days_until_expiration();
                   Active Customer
                 </span>
               <?php else: ?>
-                <span class="inline-flex items-center gap-2 text-red-400 text-xl font-bold shrink-0">
+                <span class="inline-flex items-center gap-2 text-red-300 text-xl font-bold shrink-0">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
                   </svg>
@@ -163,7 +163,7 @@ $days_remaining = fire_get_days_until_expiration();
 
       <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9]">
         <?php if ($message): ?>
-          <div class="p-4 mb-6 rounded-lg font-medium border <?php echo $message_type === 'success' ? 'text-green-400 border-green-400' : 'text-red-400 border-red-400'; ?>">
+          <div class="p-4 mb-6 rounded-lg font-medium border <?php echo $message_type === 'success' ? 'text-green-400 border-green-400' : 'text-red-300 border-red-300'; ?>">
             <?php echo wp_kses_post($message); ?>
           </div>
         <?php endif; ?>
