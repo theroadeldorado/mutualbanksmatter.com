@@ -73,7 +73,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
                       <div class="flex flex-col gap-4">
                         <div class="rounded-xl aspect-[10/9] flex items-center justify-center overflow-hidden border-4 group border-white p-4 relative">
                           <?php if ($preview): ?>
-                            <img src="<?php echo esc_url($preview['sizes']['medium'] ?? $preview['url']); ?>" alt="<?php echo esc_attr($preview['alt']); ?>" class="w-full h-auto rounded-lg">
+                             <?php echo ResponsivePics::get_picture($preview['id'], 'sm:600 500|f', 'lazyload-effect full-image rounded-lg overflow-hidden', true, true); ?>
                           <?php else: ?>
                             <div class="w-full h-full flex items-center justify-center p-6 rounded-lg <?php echo $gradient; ?>">
                               <span class="size-[60%] flex items-center justify-center ">
@@ -138,7 +138,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
       x-trap.noscroll.noautofocus="lightbox.open"
       x-cloak
       @keydown.escape.window="lightbox.open = false"
-      class="fixed inset-0 z-[1002] flex items-center justify-center p-4 bg-black/90"
+      class="fixed inset-0 z-[1002] flex items-center justify-center p-4 bg-black/90 duration-300 ease-in-out transition-all"
       :class="{ 'opacity-0 pointer-events-none': !lightbox.open }"
       @click.self="lightbox.open = false"
     >
@@ -148,7 +148,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
         </svg>
       </button>
 
-      <div class="max-w-7xl max-h-full w-full h-full flex items-center justify-center">
+      <div class="max-w-7xl max-h-[80vh] w-full h-full flex items-center justify-center">
         <img :src="lightbox.image" :alt="lightbox.alt"class="max-w-full max-h-full object-contain">
       </div>
     </div>
