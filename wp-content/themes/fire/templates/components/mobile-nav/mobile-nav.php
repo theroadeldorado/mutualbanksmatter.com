@@ -49,7 +49,7 @@ $count = 0;
       $show_as_button = get_field('show_as_button', $item->ID);
       $show_for = get_field('show_for', $item->ID);
       $count++;
-      
+
       // Add hidden class based on login status
       $hidden_class = '';
       if($show_for === 'guests' && is_user_logged_in()) {
@@ -98,7 +98,7 @@ $count = 0;
               <?php foreach($item->children as $child):
                 $child_active = $child->url == get_permalink();
                 $child_show_for = get_field('show_for', $child->ID);
-                
+
                 // Add hidden class based on login status
                 $child_hidden_class = '';
                 if($child_show_for === 'guests' && is_user_logged_in()) {
