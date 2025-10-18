@@ -155,6 +155,45 @@
                     "parent_repeater": "field_66b62de37af69"
                 }
             ]
+        },
+        {
+            "key": "field_68f2ff9064479",
+            "label": "Portal",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68f2ff9b6447a",
+            "label": "Help email",
+            "name": "help_email",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "join@mutualbanksmatter.com",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -176,5 +215,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760158825
+    "modified": 1760755658
 }

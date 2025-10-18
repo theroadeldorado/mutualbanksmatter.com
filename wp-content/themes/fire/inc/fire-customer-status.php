@@ -27,7 +27,11 @@ function fire_is_active_customer($user_id = null) {
   }
 
   // Check if active_customer toggle is enabled
+  // ACF true/false fields can return 1, "1", true, or false
   $is_active = get_field('active_customer', 'user_' . $user_id);
+
+  // Convert to boolean - handles 1, "1", true
+  $is_active = filter_var($is_active, FILTER_VALIDATE_BOOLEAN);
 
   // If not active, return false
   if (!$is_active) {

@@ -12,7 +12,7 @@ if (!is_user_logged_in()) {
   wp_redirect(wp_login_url(get_permalink()));
   exit;
 }
-
+$help_email = get_field('help_email', 'site_settings');
 $current_user = wp_get_current_user();
 $is_active_customer = fire_is_active_customer();
 $is_admin = current_user_can('manage_options');
@@ -125,11 +125,12 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
 
           <h1 class="text-3xl lg:text-4xl font-bold mb-4 text-white">Access Restricted</h1>
           <p class="text-lg text-white mb-8">Your account is currently inactive. Please contact us to activate your access to the assets portal.</p>
-
-          <a href="mailto:join@mutualbanksmatter.com?subject=Help"
-             class="button button-light-blue inline-flex items-center gap-2 text-lg">
-            Help
-          </a>
+          <?php if ($help_email): ?>
+            <a href="mailto:<?php echo $help_email; ?>?subject=Help"
+              class="button">
+              Help
+            </a>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
     </div>
