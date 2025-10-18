@@ -23,7 +23,7 @@ $section->add_classes([
 <?php $section->start(); ?>
 <div class="fire-container">
   <?php if ($title): ?>
-    <div class="mb-8 lg:mb-12 col-[main] <?php echo $layout === '2-col' ? '' : 'md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9]'; ?>">
+    <div class="mb-8 col-[main] <?php echo $layout === '2-col' ? '' : 'md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9]'; ?>">
       <?php new Fire_Heading($tag ? $tag : 'h2', $title, 'heading-2 text-white'); ?>
     </div>
   <?php endif; ?>
