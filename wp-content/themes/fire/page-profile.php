@@ -137,7 +137,7 @@ $days_remaining = fire_get_days_until_expiration();
     <div class="fire-container">
       <?php get_template_part('templates/components/portal-nav/portal-nav'); ?>
       <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9] flex-col gap-6">
-        <h1 class="text-4xl lg:text-5xl font-bold mb-6 shrink-0">Your profile</h1>
+        <h1 class="heading-2 mb-6 shrink-0">Your profile</h1>
         <!-- account status -->
         <div class="py-2 px-4 mb-6 rounded-lg flex flex-col border-2 transition-all duration-300 <?php echo $is_active ? 'border-green-400 bg-green-400/10' : 'border-red-500 bg-red-500/10'; ?>">
           <div class="flex items-center gap-2">

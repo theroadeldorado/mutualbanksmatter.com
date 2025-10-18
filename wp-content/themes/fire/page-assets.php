@@ -31,7 +31,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
       <?php get_template_part('templates/components/portal-nav/portal-nav'); ?>
       <?php if ($is_active_customer || $is_admin): ?>
 
-        <h1 class="text-4xl lg:text-5xl font-bold mb-8 text-white">Assets</h1>
+        <h1 class="heading-2 mb-6 shrink-0">Assets</h1>
 
         <div class="hidden md:block md:col-[col-1/col-3] lg:col-[col-1/col-2]">
           <div class="flex flex-col gap-3 sticky top-0">
