@@ -2528,7 +2528,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
     /**
      * Reprocesses feeds that are configured with Payment Status conditional logic.
      *
-     * @since 2.9.19
+     * @since 2.9.20
      *
      * @param array $entry The entry object.
      * @param array $form  The form object.
@@ -2548,7 +2548,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
     /**
      * Filters out feeds that are not configured with Payment Status conditional logic.
      *
-     * @since 2.9.19
+     * @since 2.9.20
      *
      * @param array $feeds The feeds to be processed.
      * @param array $entry The entry currently being processed.
@@ -2558,6 +2558,12 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
      */
     public function get_feeds_to_reprocess( $feeds, $entry, $form ) {
 
+        // If there are no feeds or feeds is not an array, return it as is.
+        if ( ! is_array( $feeds ) ) {
+            return $feeds;
+        }
+
+        // Filtering feeds to only include those with Payment Status conditional logic.
         $payment_status_feeds = array_filter( $feeds, function( $feed ) {
 		    $rules   = rgars( $feed, 'meta/feed_condition_conditional_logic_object/conditionalLogic/rules' );
             $enabled = rgars( $feed, 'meta/feed_condition_conditional_logic' );

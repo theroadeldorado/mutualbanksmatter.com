@@ -29,9 +29,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
   <main class="py-36 lg:py-40 site-main" x-data="{ lightbox: { open: false, image: '', alt: '' } }">
     <div class="fire-container">
       <?php get_template_part('templates/components/portal-nav/portal-nav'); ?>
-      <?php if ($is_active_customer ): ?>
-      <!-- || $is_admin -->
-
+      <?php if ($is_active_customer || $is_admin): ?>
 
         <h1 class="text-4xl lg:text-5xl font-bold mb-8 text-white">Assets</h1>
 

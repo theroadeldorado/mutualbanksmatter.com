@@ -47,27 +47,6 @@
             "allow_null": 0,
             "allow_in_bindings": 0,
             "layout": "horizontal"
-        },
-        {
-            "key": "field_68f04da912fa9",
-            "label": "Show for Logged In Users Only",
-            "name": "users_only",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
         }
     ],
     "location": [
@@ -89,5 +68,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760579224
+    "modified": 1760763421
 }

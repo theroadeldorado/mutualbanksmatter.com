@@ -417,7 +417,7 @@ class GFAPI {
 		}
 		$form_ids = array();
 		$failed_forms = array();
-		
+
 		foreach ( $forms as $form ) {
 			$result = self::add_form( $form );
 			if ( is_wp_error( $result ) ) {
@@ -430,11 +430,11 @@ class GFAPI {
 				} else {
 					return $result;
 				}
-				
+
 			} else {
 				$form_ids[] = $result;
 			}
-			
+
 		}
 		if ( $continue_on_error ) {
 			return array(
@@ -442,9 +442,9 @@ class GFAPI {
 				'failed_forms' => $failed_forms
 			);
 		}
-		
+
 		return $form_ids;
-		
+
 	}
 
 	/**
@@ -2264,6 +2264,18 @@ class GFAPI {
 		if ( false === $results ) {
 			return new WP_Error( 'error_inserting', __( 'There was an error while inserting a feed', 'gravityforms' ), $wpdb->last_error );
 		}
+
+		/*
+		 * Action triggered after a feed is added.
+		 *
+		 * @since 2.9.20
+		 *
+		 * @param int    $feed_id    The ID of the newly created feed.
+		 * @param int    $form_id    The ID of the form to which the feed belongs.
+		 * @param array  $feed_meta  The feed meta.
+		 * @param string $addon_slug The slug of the add-on to which the feed belongs
+		 */
+		do_action( 'gform_post_add_feed', $wpdb->insert_id, $form_id, $feed_meta, $addon_slug );
 
 		return $wpdb->insert_id;
 	}

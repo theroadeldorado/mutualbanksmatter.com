@@ -1230,6 +1230,17 @@ abstract class GFFeedAddOn extends GFAddOn {
 
 		$wpdb->update( "{$wpdb->prefix}gf_addon_feed", array( 'is_active' => $is_active ), array( 'id' => $id ), array( '%d' ), array( '%d' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
+		/*
+		 * Do an action after a feed status has been updated.
+		 *
+		 * @since 2.9.20
+		 *
+		 * @param int         $id        The ID of the feed being updated.
+		 * @param bool        $is_active The new active status of the feed.
+		 * @param GFFeedAddOn $this      The current instance of the add-on for which the feed is being updated.
+		 */
+		do_action( 'gform_update_feed_active', $id, $is_active, $this );
+
 		return $wpdb->rows_affected > 0;
 	}
 
