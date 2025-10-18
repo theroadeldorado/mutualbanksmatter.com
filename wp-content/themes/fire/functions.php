@@ -243,3 +243,21 @@ function fire_print_scripts_at_location($scripts, $location)
     print $script['script'];
   }
 }
+
+/**
+ * Redirect non-editor/admin users to the /assets page after login
+ */
+function fire_redirect_non_admin_users($redirect_to, $request, $user) {
+  // Check if user login was successful
+  if (isset($user->roles) && is_array($user->roles)) {
+    // Check if user is NOT an administrator or editor
+    if (!in_array('administrator', $user->roles) && !in_array('editor', $user->roles)) {
+      // Redirect to assets page
+      return home_url('/assets');
+    }
+  }
+
+  // Return default redirect for admins/editors
+  return $redirect_to;
+}
+add_filter('login_redirect', 'fire_redirect_non_admin_users', 10, 3);
