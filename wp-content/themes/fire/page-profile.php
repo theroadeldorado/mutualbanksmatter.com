@@ -173,7 +173,7 @@ $days_remaining = fire_get_days_until_expiration();
           <?php elseif ($is_active): ?>
             <p class="text-sm text-white">Indefinite access</p>
           <?php else: ?>
-            <p class="text-sm text-white">Your account is currently inactive. Please contact  <a href="mailto:<?php echo $help_email; ?>?subject=Help" class="no-underline text-white hover:text-light-blue">help</a> to activate your access to the assets portal.</p>
+            <p class="text-sm text-white">Your account is currently inactive. Please contact  <a href="mailto:<?php echo $help_email; ?>?subject=Help" class="underline text-white hover:text-light-blue">help</a> to activate your access to the assets portal.</p>
 
           <?php endif; ?>
         </div>
