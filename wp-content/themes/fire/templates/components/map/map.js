@@ -64,6 +64,7 @@ export default () => ({
         });
 
         // Create popup content
+        const fullAddress = `${location.address1 ? location.address1 + ', ' : ''}${location.address2 || ''}`;
         const popupContent = `
           <div class="popup-title">${location.title}</div>
           <div class="popup-address">
@@ -83,13 +84,19 @@ export default () => ({
                     .join('')
                 : ''
             }
-            <a href="https://www.google.com/maps/dir/?api=1&destination=${location.coords.lat},${location.coords.lng}" target="_blank" class="location-action popup-action">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}" target="_blank" class="location-action popup-action">
               Directions
             </a>
           </div>
         `;
 
-        marker.bindPopup(popupContent);
+        marker.bindPopup(popupContent, {
+          closeButton: true,
+          autoClose: true,
+          keepInView: true,
+          autoPan: true,
+          autoPanPadding: [50, 50],
+        });
         marker.locationIndex = index;
 
         marker.on('click', () => {
@@ -125,10 +132,15 @@ export default () => ({
       return;
     }
 
-    locations.forEach((location, index) => {
+    locations.forEach((location, displayIndex) => {
       const card = document.createElement('div');
       card.className = 'location-card';
-      card.dataset.index = index;
+      card.dataset.index = displayIndex;
+
+      const fullAddress = `${location.address1 ? location.address1 + ', ' : ''}${location.address2 || ''}`;
+
+      // Find the original index of this location in the full locations array
+      const originalIndex = this.locations.findIndex((loc) => loc.coords.lat === location.coords.lat && loc.coords.lng === location.coords.lng && loc.title === location.title);
 
       card.innerHTML = `
         <div class="location-name">${location.title}</div>
@@ -152,7 +164,7 @@ export default () => ({
                   .join('')
               : ''
           }
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.coords.lat},${location.coords.lng}" target="_blank" class="location-action" onclick="event.stopPropagation()">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}" target="_blank" class="location-action" onclick="event.stopPropagation()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
               <path d="M160 252.6C160 166.6 231.1 96 320 96C408.9 96 480 166.6 480 252.6C480 302.9 454.1 362 418.6 418.2C384.6 472 344.6 518.7 320 545.6C295.4 518.7 255.4 471.9 221.4 418.2C185.9 362 160 302.9 160 252.6zM320 64C214 64 128 148.4 128 252.6C128 371.9 248.2 514.9 298.4 569.4C310.2 582.2 329.8 582.2 341.6 569.4C391.8 514.9 512 371.9 512 252.6C512 148.4 426 64 320 64zM368 256C368 282.5 346.5 304 320 304C293.5 304 272 282.5 272 256C272 229.5 293.5 208 320 208C346.5 208 368 229.5 368 256zM320 176C275.8 176 240 211.8 240 256C240 300.2 275.8 336 320 336C364.2 336 400 300.2 400 256C400 211.8 364.2 176 320 176z"/>
             </svg>
@@ -162,12 +174,13 @@ export default () => ({
       `;
 
       card.addEventListener('click', () => {
-        const marker = this.markers[index];
+        // Use the original index to find the correct marker
+        const marker = this.markers[originalIndex];
         if (marker) {
           this.map.setView([location.coords.lat, location.coords.lng], 12);
           marker.openPopup();
           this.setActiveMarker(marker);
-          this.highlightLocationCard(index);
+          this.highlightLocationCard(displayIndex);
         }
       });
 
@@ -208,11 +221,16 @@ export default () => ({
 
     this.renderLocationList(filtered);
     document.getElementById('locations-count').textContent = `${filtered.length} location${filtered.length !== 1 ? 's' : ''} found`;
+  },
 
-    // Also search for the address using Nominatim
-    this.searchTimeout = setTimeout(() => {
-      this.searchAddress(query);
-    }, 500);
+  // Handle Enter key for address search
+  handleSearchKeydown(event) {
+    if (event.key === 'Enter') {
+      const query = event.target.value.trim();
+      if (query.length >= 3) {
+        this.searchAddress(query);
+      }
+    }
   },
 
   // Search address using Nominatim

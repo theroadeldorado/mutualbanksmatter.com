@@ -61,6 +61,7 @@ $section->add_classes([
               placeholder="Enter your address or zip code"
               autocomplete="off"
               @input="handleSearch($event)"
+              @keydown="handleSearchKeydown($event)"
             />
           </div>
         </div>
