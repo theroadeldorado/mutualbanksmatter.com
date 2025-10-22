@@ -237,6 +237,15 @@ function fire_check_customer_status_on_login($user_login, $user) {
 // add_action('wp_login', 'fire_check_customer_status_on_login', 10, 2);
 
 /**
+ * Set new users as inactive customers by default
+ */
+function fire_set_new_user_inactive($user_id) {
+  // Set active_customer to false for new users
+  update_field('active_customer', false, 'user_' . $user_id);
+}
+add_action('user_register', 'fire_set_new_user_inactive');
+
+/**
  * Add phone number field to user profile in WordPress admin
  */
 function fire_add_phone_field_to_user_profile($user) {
