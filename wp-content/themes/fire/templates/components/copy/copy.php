@@ -12,7 +12,7 @@ $section->add_classes([
 <div class="fire-container">
   <?php if ($title && $tag) : ?>
     <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-4/col-9]">
-      <?php new Fire_Heading($tag, $title, 'mb-4 text-balance'); ?>
+      <?php new Fire_Heading($tag, $title, 'mb-4 heading-3 text-balance'); ?>
     </div>
   <?php endif; ?>
 
