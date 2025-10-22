@@ -14,14 +14,14 @@ $mission = function_exists('get_field') ? get_field('mission', 'site_settings') 
 $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_settings') : false;
 ?>
 
-  <footer class="text-white py-12 lg:py-20  <?php echo is_front_page() ? 'bg-blue' : 'bg-charcoal'; ?>">
+  <footer class="text-white pb-20 pt-12 lg:py-20  <?php echo is_front_page() ? 'bg-blue' : 'bg-charcoal'; ?>">
     <div class="fire-container relative z-[1]">
-      <div class="col-[col-1]">
+      <div class="col-[main] md:col-[col-1]">
         <a href="<?php echo home_url(); ?>">
           <img src="<?php echo get_template_directory_uri(); ?>/theme/assets/media/images/logo-mark.png" alt="<?php echo get_bloginfo('name'); ?>" class="w-16 h-auto">
         </a>
       </div>
-      <div class="col-[col-2/col-7] text-base">
+      <div class="col-[main] md:col-[col-2/col-7] text-base mt-8 md:mt-0">
         <?php if ($mission): ?>
           <div class="wizzy mb-6">
             <?php echo $mission; ?>
@@ -29,7 +29,7 @@ $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_s
           <p><?php echo sprintf('© %s %s', date('Y'), get_bloginfo('name')); ?></p>
         <?php endif; ?>
       </div>
-      <div class="col-[col-8/col-9]">
+      <div class="col-[main] md:col-[col-8/col-9] mt-8 md:mt-0">
         <?php
           wp_nav_menu(
             array(
@@ -41,8 +41,8 @@ $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_s
           );
         ?>
       </div>
-      <div class="col-[col-10/col-12]">
-        <div class="flex justify-end">
+      <div class="col-[main] md:col-[col-10/col-12] mt-8 md:mt-0">
+        <div class="flex md:justify-end">
           <?php if($contact_info): ?>
             <div class="text-base wizzy">
               <?php echo $contact_info; ?>

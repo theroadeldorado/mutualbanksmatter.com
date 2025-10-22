@@ -116,7 +116,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
                       }
                       ?>
                       <div class="flex flex-col gap-2">
-                        <div class="rounded-xl aspect-[10/9] flex items-center justify-center overflow-hidden border-2 group border-white p-2 relative">
+                        <div class="rounded-xl aspect-[5/4] lg:aspect-[10/9] flex items-center justify-center overflow-hidden border-2 group border-white p-2 relative">
                           <?php if ($preview): ?>
                              <?php echo ResponsivePics::get_picture($preview['id'], 'sm:600 500|f', 'lazyload-effect full-image rounded-lg overflow-hidden', true, false); ?>
                           <?php elseif ($can_preview && $preview_type === 'image' && !$preview): ?>
@@ -156,7 +156,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
                           <?php endif; ?>
 
                           <?php if ($download_file || $can_preview): ?>
-                            <div class="absolute inset-0 flex items-center justify-center gap-6 bg-black/70 duration-300 ease-in-out transition-all opacity-0 group-hover:opacity-100">
+                            <div class="hidden absolute inset-0 lg:flex items-center justify-center gap-6 bg-black/70 duration-300 ease-in-out transition-all opacity-0 group-hover:opacity-100">
                               <?php if ($download_file): ?>
                                 <a href="<?php echo esc_url($download_file['url']); ?>" download class="flex flex-col gap-2 items-center no-underline text-white hover:text-light-blue transition-colors" title="Download <?php the_title(); ?>">
                                   <span class="size-12 flex items-center justify-center">
@@ -192,9 +192,29 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
                             </div>
                           <?php endif; ?>
                         </div>
-                        <div class="flex justify-between gap-4">
+                        <?php if ($download_file || $can_preview): ?>
+                          <div class="flex gap-2 lg:hidden px-2 my-2">
+                            <?php if ($download_file): ?>
+                              <a href="<?php echo esc_url($download_file['url']); ?>" download class="button" title="Download <?php the_title(); ?>">
+                                Download
+                              </a>
+                            <?php endif; ?>
+                            <?php if ($can_preview): ?>
+                              <?php if ($preview_type === 'pdf'): ?>
+                                <a href="<?php echo esc_url($preview_url); ?>" target="_blank" rel="noopener noreferrer" class="button" title="Preview <?php the_title(); ?>">
+                                    Preview
+                                </a>
+                              <?php else: ?>
+                                <button @click="lightbox = { open: true, type: '<?php echo esc_js($preview_type); ?>', src: '<?php echo esc_url($preview_url); ?>', alt: '<?php echo esc_attr($preview['alt'] ?? get_the_title()); ?>' }" class="button" title="Preview <?php the_title(); ?>">
+                                  Preview
+                                </button>
+                              <?php endif; ?>
+                            <?php endif; ?>
+                          </div>
+                        <?php endif; ?>
+                        <div class="flex justify-between gap-4 px-2">
                           <?php if ($description): ?>
-                            <div class="text-sm leading-5 text-white wizzy px-2"><?php echo $description; ?></div>
+                            <div class="text-sm leading-5 text-white wizzy"><?php echo $description; ?></div>
                           <?php endif; ?>
                         </div>
                       </div>

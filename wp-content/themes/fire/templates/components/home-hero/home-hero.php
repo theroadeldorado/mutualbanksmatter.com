@@ -48,7 +48,7 @@ $section->add_classes([
 
 
 
-  <div class="relative z-[1] flex items-center min-h-screen py-16 lg:py-24">
+  <div class="relative z-[1] flex justify-center items-center min-h-screen py-16 lg:py-24">
     <div class="fire-container">
       <div class="text-left col-[main]">
         <div class="space-y-6">

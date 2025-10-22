@@ -43,9 +43,9 @@ $section->add_classes([
   </div>
 </div>
 
-<div class="grid-stack" x-data="{ showReset: false }">
+<div class="grid-stack" x-data="{ showReset: false }" id="login-form">
   <!-- Login Form -->
-  <div class="fire-container duration-300 ease-in-out transition-all" :class="{ 'opacity-0 pointer-events-none': showReset }" x-transition>
+  <div class="fire-container gap-y-8 duration-300 ease-in-out transition-all" :class="{ 'opacity-0 pointer-events-none': showReset }" x-transition>
     <div class="col-[main] md:col-[col-1/col-6] lg:col-[col-1/col-4] content-center">
       <?php if ($media_type === 'video' && $vimeo_video_id): ?>
       <div class="relative w-full rounded-lg overflow-hidden shadow-lg aspect-video bg-black">
@@ -127,7 +127,7 @@ $section->add_classes([
           <?php endif; ?>
           <button
             type="button"
-            @click="showReset = true"
+            @click="showReset = true; document.getElementById('login-form').scrollIntoView({ behavior: 'smooth', block: 'start' })"
             class="underline hover:no-underline"
           >
             Reset Password

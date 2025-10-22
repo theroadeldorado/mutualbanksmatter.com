@@ -1,6 +1,6 @@
 @utility button {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-2;
-  @apply rounded-md text-lg;
+  @apply inline-flex items-center justify-center gap-2 md:px-6 md:py-2 px-4 py-1.5;
+  @apply rounded-md text-base md:text-lg;
   @apply font-normal text-charcoal no-underline;
   @apply transition-all duration-200 cursor-pointer;
   @apply focus:outline-none;

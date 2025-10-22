@@ -136,7 +136,7 @@ $days_remaining = fire_get_days_until_expiration();
   <main class="py-36 lg:py-40 site-main">
     <div class="fire-container">
       <?php get_template_part('templates/components/portal-nav/portal-nav'); ?>
-      <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9] flex-col gap-6">
+      <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-4/col-9] flex-col gap-6">
         <h1 class="heading-2 mb-6 shrink-0">Your profile</h1>
         <!-- account status -->
         <div class="py-2 px-4 mb-6 rounded-lg flex flex-col border-2 transition-all duration-300 <?php echo $is_active ? 'border-green-400 bg-green-400/10' : 'border-red-500 bg-red-500/10'; ?>">
@@ -179,7 +179,7 @@ $days_remaining = fire_get_days_until_expiration();
         </div>
       </div>
 
-      <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-3/col-9]">
+      <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-4/col-9]">
         <?php if ($message): ?>
           <div class="p-4 mb-6 rounded-lg font-medium border <?php echo $message_type === 'success' ? 'text-green-400 border-green-400 bg-green-400/10' : 'text-white border-red-500 bg-red-500/10'; ?>">
             <?php echo wp_kses_post($message); ?>

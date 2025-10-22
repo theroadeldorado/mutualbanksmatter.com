@@ -15,7 +15,7 @@ $profile_url = home_url('/profile');
 ?>
 
 <nav class="text-white mb-12">
-  <ul class="flex justify-end gap-8">
+  <ul class="flex justify-start gap-6 md:justify-end md:gap-8">
     <?php if ($is_active_customer || $is_admin): ?>
     <li>
       <a href="<?php echo $assets_url; ?>" class="text-white no-underline hover:text-light-blue font-medium <?php echo $current_url === $assets_url ? '!text-light-blue' : ''; ?>">
