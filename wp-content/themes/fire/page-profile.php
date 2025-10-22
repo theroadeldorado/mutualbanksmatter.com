@@ -15,6 +15,7 @@ if (!is_user_logged_in()) {
 
 $current_user = wp_get_current_user();
 $user_id = $current_user->ID;
+$help_email = get_field('help_email', 'site_settings');
 
 // Handle form submission
 if (isset($_POST['update_profile']) && wp_verify_nonce($_POST['profile_nonce'], 'update_profile_action')) {
@@ -161,10 +162,8 @@ $days_remaining = fire_get_days_until_expiration();
           </div>
 
           <?php if ($is_active && $expiration_date): ?>
-            <p class="text-sm <?php echo ($days_remaining !== false && $days_remaining <= 30) ? 'text-white' : 'text-white'; ?>">
-              <?php if ($days_remaining === 0): ?>
-                Your access has expired.
-              <?php elseif ($days_remaining !== false && $days_remaining <= 30): ?>
+            <p class="text-sm text-white">
+              <?php if ($days_remaining !== false && $days_remaining <= 30): ?>
                 <strong>Expires soon!</strong> Your access expires on <?php echo date('F j, Y', strtotime($expiration_date)); ?>
               <?php else: ?>
                 Active until <?php echo date('F j, Y', strtotime($expiration_date)); ?>
@@ -173,8 +172,13 @@ $days_remaining = fire_get_days_until_expiration();
           <?php elseif ($is_active): ?>
             <p class="text-sm text-white">Indefinite access</p>
           <?php else: ?>
-            <p class="text-sm text-white">Your account is currently inactive. Please contact  <a href="mailto:<?php echo $help_email; ?>?subject=Help" class="underline text-white hover:text-light-blue">help</a> to activate your access to the assets portal.</p>
-
+            <p class="text-sm text-white">
+              Your account is currently inactive.
+              <?php if ($expiration_date && $days_remaining === 0): ?>
+                Your access expired on <?php echo date('F j, Y', strtotime($expiration_date)); ?>.
+              <?php endif; ?>
+              Please contact <a href="mailto:<?php echo esc_attr($help_email); ?>?subject=Help" class="underline text-white hover:text-light-blue">help</a> to activate your access to the assets portal.
+            </p>
           <?php endif; ?>
         </div>
       </div>

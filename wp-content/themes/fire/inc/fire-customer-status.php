@@ -46,10 +46,11 @@ function fire_is_active_customer($user_id = null) {
     return true;
   }
 
-  // Compare expiration date with today
-  $today = date('Y-m-d');
+  // Compare expiration date with today using WordPress timezone
+  $today = current_time('Y-m-d');
 
-  // User is active if today is before or on the expiration date
+  // User is active if today is before or equal to the expiration date
+  // User becomes inactive the day AFTER the expiration date
   return $today <= $active_till;
 }
 
@@ -93,7 +94,8 @@ function fire_get_days_until_expiration($user_id = null) {
     return false;
   }
 
-  $today = new DateTime(date('Y-m-d'));
+  // Use WordPress timezone for consistent date handling
+  $today = new DateTime(current_time('Y-m-d'));
   $expiration = new DateTime($active_till);
   $interval = $today->diff($expiration);
 
@@ -224,11 +226,6 @@ add_filter('manage_users_sortable_columns', 'fire_make_active_customer_column_so
  * Uncomment the add_action below to enable this feature
  */
 function fire_check_customer_status_on_login($user_login, $user) {
-  // Skip check for admins
-  if (user_can($user->ID, 'manage_options')) {
-    return;
-  }
-
   // If user is not an active customer, redirect to a specific page
   if (!fire_is_active_customer($user->ID)) {
     // You can customize this redirect URL

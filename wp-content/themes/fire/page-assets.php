@@ -15,7 +15,6 @@ if (!is_user_logged_in()) {
 $help_email = get_field('help_email', 'site_settings');
 $current_user = wp_get_current_user();
 $is_active_customer = fire_is_active_customer();
-$is_admin = current_user_can('manage_options');
 $categories = get_terms(array(
   'taxonomy' => 'asset-category',
   'hide_empty' => true,
@@ -29,7 +28,7 @@ $gradients =['bg-linear-to-tr from-cyan-700 via-blue-400 to-indigo-600', 'bg-lin
   <main class="py-36 lg:py-40 site-main" x-data="{ lightbox: { open: false, type: '', src: '', alt: '' } }">
     <div class="fire-container">
       <?php get_template_part('templates/components/portal-nav/portal-nav'); ?>
-      <?php if ($is_active_customer || $is_admin): ?>
+      <?php if ($is_active_customer): ?>
 
         <h1 class="heading-2 mb-6 shrink-0">Assets</h1>
 
