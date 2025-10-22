@@ -261,3 +261,35 @@ function fire_redirect_non_admin_users($redirect_to, $request, $user) {
   return $redirect_to;
 }
 add_filter('login_redirect', 'fire_redirect_non_admin_users', 10, 3);
+
+/**
+ * Custom Gravity Forms User Registration Activation Page
+ * This intercepts the activation request and displays our custom template
+ */
+function fire_custom_activation_page() {
+  if (isset($_GET['gfur_activation'])) {
+    // Completely bypass WordPress template loading
+    get_header();
+    ?>
+    <main id="primary" class="site-main">
+      <div class="fire-container pt-40 lg:pt-56">
+        <div class="col-[main] md:col-[col-2/col-11] lg:col-[col-3/col-10] text-center">
+          <h1 class="heading-3 mb-6">Your account is now active!</h1>
+          <p class="text-lg text-white mb-6">Your account has been successfully activated.</p>
+          <p class="text-base text-white mb-8">
+            Check your email for your username and password reset link.
+          </p>
+          <div class="flex gap-4 justify-center">
+            <a href="/log-in/" class="button">Log In</a>
+            <a href="<?php echo home_url(); ?>" class="button-outline">Go to Homepage</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <?php
+    get_footer();
+    exit;
+  }
+}
+// Hook very early, before Gravity Forms can output anything
+add_action('wp', 'fire_custom_activation_page', 1);
