@@ -58,6 +58,18 @@
     }
   }
 
+  .layout.active-layout .acf-fc-layout-actions-wrap .acf-fc-titles {
+    @apply text-white!;
+  }
+  .acf-fc-layout-controls .fire-toggle-layout {
+    @apply relative!;
+
+    .fire-toggle-layout--visible,
+    .fire-toggle-layout--invisible {
+      @apply block! absolute! top-1/2! left-1/2! -translate-x-1/2! -translate-y-1/2! h-4! w-4!;
+    }
+  }
+
   #acf-group_5eb2da1550e86 {
     .handle-actions {
       @apply !flex;

@@ -3,27 +3,6 @@
     "title": "Page Sections",
     "fields": [
         {
-            "key": "field_68ed9528928a5",
-            "label": "Authorized Users Only",
-            "name": "authorized_users_only",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This page is only for authorized users",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
             "key": "field_5eb2dae373d39",
             "label": "Sections",
             "name": "sections",
@@ -255,5 +234,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760400881
+    "modified": 1761093347
 }

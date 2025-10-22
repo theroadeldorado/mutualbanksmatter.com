@@ -44,7 +44,13 @@ function update_flexible_content_acf_fields() {
             text = text + '...';
           }
           if (text.replace(/\s/g, '').length) {
-            $layout.find('.acf-fc-layout-handle').append('<span class="acf-fc-titles"> — ' + text + '</span>');
+            var $handle = $layout.find('.acf-fc-layout-handle');
+            var $existingTitle = $handle.find('.acf-fc-titles');
+            if ($existingTitle.length) {
+              $existingTitle.replaceWith('<span class="acf-fc-titles"> — ' + text + '</span>');
+            } else {
+              $handle.append('<span class="acf-fc-titles"> — ' + text + '</span>');
+            }
           }
         }
 
@@ -94,13 +100,13 @@ function update_flexible_content_acf_fields() {
             var isVisibleEl = isVisible.$el;
             var inputField = isVisibleEl.find(`input[type="checkbox"]`);
             if (inputField.is(':checked')) {
-              $layout.find('.fire-toggle-layout--visible').show();
-              $layout.find('.fire-toggle-layout--invisible').hide();
+              $layout.find('.fire-toggle-layout--visible').css('opacity', '1');
+              $layout.find('.fire-toggle-layout--invisible').css('opacity', '0');
               isVisibleEl.find('.acf-switch').addClass('-on');
               $layout.find('.section--invisible-btn').remove();
             } else {
-              $layout.find('.fire-toggle-layout--visible').hide();
-              $layout.find('.fire-toggle-layout--invisible').show();
+              $layout.find('.fire-toggle-layout--visible').css('opacity', '0');
+              $layout.find('.fire-toggle-layout--invisible').css('opacity', '1');
               isVisibleEl.find('.acf-switch').removeClass('-on');
               $layout.addClass('section--invisible');
               $layout.find('.acf-fc-layout-handle').append(hiddenPill);
@@ -115,15 +121,15 @@ function update_flexible_content_acf_fields() {
 
             if (inputField.is(':checked')) {
               inputField.prop('checked', false);
-              $layout.find('.fire-toggle-layout--visible').hide();
-              $layout.find('.fire-toggle-layout--invisible').show();
+              $layout.find('.fire-toggle-layout--visible').css('opacity', '0');
+              $layout.find('.fire-toggle-layout--invisible').css('opacity', '1');
               isVisibleEl.find('.acf-switch').removeClass('-on');
               $layout.addClass('section--invisible');
               $layout.find('.acf-fc-layout-handle').append(hiddenPill);
             } else {
               inputField.prop('checked', true);
-              $layout.find('.fire-toggle-layout--visible').show();
-              $layout.find('.fire-toggle-layout--invisible').hide();
+              $layout.find('.fire-toggle-layout--visible').css('opacity', '1');
+              $layout.find('.fire-toggle-layout--invisible').css('opacity', '0');
               isVisibleEl.find('.acf-switch').addClass('-on');
               $layout.removeClass('section--invisible');
               $layout.find('.section--invisible-btn').remove();
