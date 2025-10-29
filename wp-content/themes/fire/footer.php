@@ -23,10 +23,9 @@ $contact_info = function_exists('get_field') ? get_field('contact_info', 'site_s
       </div>
       <div class="col-[main] md:col-[col-2/col-7] text-base mt-8 md:mt-0">
         <?php if ($mission): ?>
-          <div class="wizzy mb-6">
+          <div class="wizzy">
             <?php echo $mission; ?>
           </div>
-          <p><?php echo sprintf('© %s %s', date('Y'), get_bloginfo('name')); ?></p>
         <?php endif; ?>
       </div>
       <div class="col-[main] md:col-[col-8/col-9] mt-8 md:mt-0">
