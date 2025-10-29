@@ -19,7 +19,7 @@ $logo_path = get_template_directory_uri() . '/theme/assets/media/images/logo.png
 
 // Add section classes for identification
 $section->add_classes([
-  'home-hero relative max-w-[100vw] overflow-x-clip'
+  'home-hero relative max-w-[100vw] overflow-clip'
 ]);
 ?>
 
@@ -48,7 +48,7 @@ $section->add_classes([
 
 
 
-  <div class="relative z-[1] flex justify-center items-center min-h-screen py-16 lg:py-24">
+  <div class="relative z-[1] flex justify-center items-center min-h-screen py-16 lg:py-24 xl:pt-32">
     <div class="fire-container">
       <div class="text-left col-[main]">
         <div class="space-y-6">
@@ -57,23 +57,24 @@ $section->add_classes([
               <img
                 src="<?php echo esc_url($logo_path); ?>"
                 alt="Mutual Banks Matter"
-                class="h-32 lg:h-40 xl:h-52 w-auto"
+                class="h-32 lg:h-40 xl:h-[212px] w-auto"
               />
             </div>
           <?php endif; ?>
 
           <?php if ($title && $tag): ?>
-            <?php new Fire_Heading($tag ? $tag : 'h1', $title, 'heading-2 lg:heading-1 text-charcoal text-balance '); ?>
+            <?php new Fire_Heading($tag ? $tag : 'h1', $title, 'heading-1 text-charcoal text-balance max-w-[1200px]'); ?>
           <?php endif; ?>
 
           <?php if ($button): ?>
             <div class="mt-8">
               <a
                 href="<?php echo esc_url($button['url']); ?>"
-                class="button-charcoal"
+                class="button-charcoal xl:text-[24px]"
                 <?php if ($button['target']): ?>target="<?php echo esc_attr($button['target']); ?>"<?php endif; ?>
               >
                 <?php echo esc_html($button['title']); ?>
+                <?php new Fire_SVG('icon--chevron-right'); ?>
               </a>
             </div>
           <?php endif; ?>
