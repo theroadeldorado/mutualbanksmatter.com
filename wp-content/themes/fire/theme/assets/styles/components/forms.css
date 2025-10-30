@@ -114,4 +114,134 @@
       @apply text-center text-lg;
     }
   }
+
+  /* ActiveCampaign Embedded Form Overrides */
+  /* Target forms by ID pattern to avoid relying on unstable class names */
+  form[id^='_form_'] {
+    /* Reset embedded form container styles */
+    @apply !w-full !border-2 !border-white !rounded-lg !p-6 !bg-transparent !m-0 !max-w-full;
+    font-family: inherit !important;
+
+    /* Override all font imports and families */
+    *,
+    ._form-label,
+    ._form_element,
+    label,
+    input,
+    textarea,
+    button,
+    ._form-content,
+    ._row span,
+    ._row label {
+      font-family: inherit !important;
+    }
+
+    /* Form elements */
+    ._form_element {
+      @apply !w-full !mb-6 !max-w-full;
+    }
+
+    /* Labels */
+    ._form-label,
+    label {
+      @apply !block !text-base !text-white !mb-1 !font-thin;
+    }
+
+    /* Required field indicator */
+    .field-required {
+      @apply !ml-1 !text-red-400;
+    }
+
+    /* Input fields - override all embedded styles */
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='date'],
+    textarea {
+      @apply !bg-transparent !border-0 !border-b-2 !border-white !py-2 !px-0 !w-full !text-lg !text-white !rounded-none !h-auto;
+      outline: none !important;
+      box-shadow: none !important;
+
+      &::placeholder {
+        opacity: 0.7 !important;
+      }
+
+      &:focus,
+      &:focus-visible {
+        @apply !outline-none !shadow-none !border-b-light-blue !bg-transparent;
+      }
+    }
+
+    /* Textarea specific */
+    textarea {
+      @apply !max-h-[150px] !resize-y;
+    }
+
+    /* Submit button */
+    ._submit,
+    button[type='submit'],
+    button._submit {
+      @apply button !bg-light-blue !text-charcoal !ring-light-blue !ring-1 !cursor-pointer !px-6 !py-[14px] !text-base !text-center !rounded-lg !w-auto !mt-4;
+      -webkit-appearance: none !important;
+      transition: all 0.2s ease !important;
+
+      &:hover,
+      &:active {
+        @apply !bg-white !text-charcoal !ring-white;
+      }
+
+      &:disabled {
+        @apply !cursor-not-allowed !opacity-40;
+      }
+    }
+
+    /* Button wrapper */
+    ._button-wrapper {
+      @apply !m-0 !p-0;
+    }
+
+    /* Error states */
+    ._has_error,
+    input._has_error,
+    textarea._has_error {
+      @apply !border-b-red-400 !border-t-0 !border-l-0 !border-r-0;
+    }
+
+    ._error {
+      @apply !text-red-400 !text-sm !relative !block !mt-1 !bg-transparent !p-0 !border-0 !shadow-none;
+    }
+
+    ._error-inner {
+      @apply !text-red-400 !text-sm !pt-2 !bg-transparent !px-0 !pb-0 !border-0 !shadow-none !text-left !m-0;
+    }
+
+    ._error-arrow {
+      @apply !hidden;
+    }
+
+    /* Success message */
+    ._form-thank-you {
+      @apply !text-center !text-lg !text-white;
+    }
+
+    /* Hide branding */
+    ._form-branding {
+      @apply !hidden;
+    }
+
+    /* Clear floats */
+    ._clear-element {
+      clear: both !important;
+    }
+
+    /* Field wrapper */
+    ._field-wrapper {
+      @apply !relative !w-full;
+    }
+
+    /* Form content */
+    ._form-content {
+      @apply !m-0 !w-full;
+    }
+  }
 }

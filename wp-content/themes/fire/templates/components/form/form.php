@@ -13,8 +13,9 @@ $title = get_sub_field('title');
 $form_id = get_sub_field('form');
 $copy = get_sub_field('copy');
 $layout = get_sub_field('layout');
+$type = get_sub_field('type');
+$embed_code = get_sub_field('embed');
 
-// Add custom classes to the section wrapper
 $section->add_classes([
   'map py-16 lg:py-24'
 ]);
@@ -34,11 +35,17 @@ $section->add_classes([
     </div>
   <?php endif; ?>
 
-  <?php if ($form_id): ?>
+  <?php if ($form_id && $type === 'gf'): ?>
     <div class="col-[main] <?php echo $layout === '2-col' ? 'md:col-[col-7/col-12]' : 'md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-4/col-9]'; ?>">
       <div class="w-full border-2 border-white rounded-lg p-6">
         <?php echo do_shortcode('[gravityform id="' . $form_id . '" title="false" ajax="true"]'); ?>
       </div>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($embed_code && $type === 'embed'): ?>
+    <div class="col-[main] <?php echo $layout === '2-col' ? 'md:col-[col-7/col-12]' : 'md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-4/col-9]'; ?>">
+      <?php echo $embed_code; ?>
     </div>
   <?php endif; ?>
 </div>

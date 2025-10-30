@@ -70,6 +70,7 @@ $count = 0;
                 href="<?php echo $link; ?>"
                 target="<?php echo $item->target;?>"
                 class="<?php echo $show_as_button ? 'flex items-center gap-2' : 'block'; ?> text-white text-lg no-underline"
+                @click="<?php echo $link !== '#' ? 'navOpen = !navOpen' : 'open = !open';?>"
               >
                 <?php echo $title;?>
                 <?php if ($show_as_button): ?>
@@ -113,6 +114,7 @@ $count = 0;
                     href="<?php echo $child->url; ?>"
                     target="<?php echo $child->target;?>"
                     class="block text-white text-base no-underline"
+                    @click="navOpen = !navOpen"
                   >
                     <?php echo $child->title;?>
                   </a>
@@ -124,6 +126,7 @@ $count = 0;
               href="<?php echo $link; ?>"
               target="<?php echo $item->target;?>"
               class="<?php echo $show_as_button ? 'button px-4 -ml-4' : 'block text-white text-lg no-underline';?>"
+              @click="navOpen = !navOpen"
             >
               <?php echo $title;?>
               <?php if ($show_as_button): ?>
