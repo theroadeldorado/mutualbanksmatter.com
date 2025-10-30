@@ -45,8 +45,9 @@ $section->add_classes([
 
 <div class="grid-stack" x-data="{ showReset: false }" id="login-form">
   <!-- Login Form -->
-  <div class="fire-container gap-y-8 duration-300 ease-in-out transition-all" :class="{ 'opacity-0 pointer-events-none': showReset }" x-transition>
-    <div class="col-[main] md:col-[col-1/col-6] lg:col-[col-1/col-4] content-center">
+  <div class="fire-container gap-y-8 md:gap-x-12 lg:gap-x-20 duration-300 ease-in-out transition-all" :class="{ 'opacity-0 pointer-events-none': showReset }" x-transition>
+    <div class="col-[main] md:col-[col-1/col-6] xl:col-[col-1/col-4] content-center relative">
+      <div class="w-px h-[240px] bg-white absolute top-1/2 -translate-y-1/2 -right-6 lg:-right-10 -translate-x-1/2 pointer-events-none hidden md:block" aria-hidden="true"></div>
       <?php if ($media_type === 'video' && $vimeo_video_id): ?>
       <div class="relative w-full rounded-lg overflow-hidden shadow-lg aspect-video bg-black">
         <iframe
@@ -65,7 +66,7 @@ $section->add_classes([
     <?php endif; ?>
     </div>
 
-    <div class="col-[main] md:col-[col-7/col-12] lg:col-[col-5/col-8] content-center">
+    <div class="col-[main] md:col-[col-7/col-12] xl:col-[col-5/col-8] content-center">
       <?php if ($copy): ?>
         <div class="col-[main] text-left space-y-6">
           <div class="wizzy text-base text-white">
@@ -75,7 +76,8 @@ $section->add_classes([
       <?php endif; ?>
     </div>
 
-     <div class="col-[main] md:col-[col-5/col-8] lg:col-[col-9/col-12] content-center">
+     <div class="col-[main] md:col-[col-3/col-10] xl:col-[col-9/col-12] content-center relative">
+      <div class="w-px h-[240px] bg-white absolute top-1/2 -translate-y-1/2 -left-10 -translate-x-1/2 pointer-events-none hidden xl:block" aria-hidden="true"></div>
        <form method="post" action="<?php echo esc_url(wp_login_url($redirect_after_login)); ?>" class="login-form space-y-6">
          <div class="form-field mb-6">
            <label for="user_login" class="block text-base text-white">Email</label>
