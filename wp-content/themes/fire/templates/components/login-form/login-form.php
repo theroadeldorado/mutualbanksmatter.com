@@ -83,8 +83,7 @@ $section->add_classes([
              type="text"
              name="log"
              id="user_login"
-             placeholder="Email"
-             class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
+             class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-300 focus:outline-none focus:shadow-none focus:border-b-light-blue"
              value=""
              size="20"
              required
@@ -97,8 +96,7 @@ $section->add_classes([
              type="password"
              name="pwd"
              id="user_pass"
-             placeholder="Password"
-             class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
+             class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-300 focus:outline-none focus:shadow-none focus:border-b-light-blue"
              value=""
              size="20"
              required
@@ -110,7 +108,7 @@ $section->add_classes([
          <?php endif; ?>
 
          <div class="form-field mb-6">
-           <button type="submit" class="button-light-blue w-full text-center">
+           <button type="submit" class="button-light-blue w-full text-center text-base">
              Log In
            </button>
          </div>
@@ -119,7 +117,7 @@ $section->add_classes([
           <?php if ($sign_up_link): ?>
             <a
               href="<?php echo esc_url($sign_up_link['url']); ?>"
-              class="underline hover:no-underline"
+              class="no-underline hover:underline text-base"
               <?php if ($sign_up_link['target']): ?>target="<?php echo esc_attr($sign_up_link['target']); ?>"<?php endif; ?>
             >
               <?php echo esc_html($sign_up_link['title'] ? $sign_up_link['title'] : 'Sign Up'); ?>
@@ -128,7 +126,7 @@ $section->add_classes([
           <button
             type="button"
             @click="showReset = true; document.getElementById('login-form').scrollIntoView({ behavior: 'smooth', block: 'start' })"
-            class="underline hover:no-underline"
+            class="no-underline hover:underline text-base"
           >
             Reset Password
           </button>
@@ -151,8 +149,7 @@ $section->add_classes([
             type="text"
             name="user_login"
             id="user_login_reset"
-            placeholder="Email"
-            class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-400 focus:outline-none focus:shadow-none focus:border-b-light-blue"
+            class="w-full bg-transparent border-0 border-b-2 border-white py-2 px-0 text-lg text-white placeholder:text-gray-300 focus:outline-none focus:shadow-none focus:border-b-light-blue"
             value=""
             size="20"
             required
@@ -160,7 +157,7 @@ $section->add_classes([
         </div>
 
         <div class="form-field">
-          <button type="submit" class="button-light-blue text-center w-full">
+          <button type="submit" class="button-light-blue text-center w-full text-base">
             Reset Password
           </button>
         </div>

@@ -195,7 +195,6 @@ $days_remaining = fire_get_days_until_expiration();
           <?php wp_nonce_field('update_profile_action', 'profile_nonce'); ?>
 
           <div class="pb-6">
-            <h2 class="text-2xl font-semibold mb-4 text-white">Personal Information</h2>
 
             <div class="form-field">
               <label for="display_name">Name</label>
@@ -228,7 +227,7 @@ $days_remaining = fire_get_days_until_expiration();
                      id="bank_affiliation"
                      name="bank_affiliation"
                      value="<?php echo esc_attr($bank_affiliation); ?>"
-                     placeholder="e.g., Mutual Bank">
+                    >
             </div>
           </div>
 
@@ -253,14 +252,30 @@ $days_remaining = fire_get_days_until_expiration();
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <button type="submit" name="update_profile" class="button">
-              Save Changes
-            </button>
+          <div class="pb-6">
+            <h2 class="text-2xl font-semibold mb-4 text-white">Email Preferences</h2>
 
-            <a href="<?php echo home_url('/assets'); ?>" class="button">
+            <div class="form-field">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox"
+                       id="asset_updates"
+                       name="asset_updates"
+                       value="1"
+                       class="mt-1 w-5 h-5"
+                       <?php checked($asset_updates_consent, '1'); ?>>
+                <span class="text-white">I consent to receive asset update emails.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+
+            <a href="<?php echo home_url('/assets'); ?>" class="button text-base">
               Cancel
             </a>
+            <button type="submit" name="update_profile" class="button text-base">
+              Save Changes
+            </button>
           </div>
         </form>
       </div>

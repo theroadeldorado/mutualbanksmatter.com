@@ -55,6 +55,36 @@
     [x-cloak] {
       @apply hidden;
     }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+      @apply accent-light-blue;
+      accent-color: #64bfdd;
+    }
+
+    /* Custom checkbox styling */
+    input[type='checkbox'] {
+      @apply appearance-none w-5 h-5 border-2 border-white rounded cursor-pointer relative shrink-0;
+      background-color: transparent;
+
+      &:checked {
+        @apply bg-light-blue border-light-blue;
+      }
+
+      &:checked::after {
+        content: '';
+        @apply absolute inset-0 flex items-center justify-center;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      &:focus,
+      &:focus-visible {
+        @apply outline-none ring-2 ring-light-blue ring-offset-2 ring-offset-charcoal;
+      }
+    }
   }
 
   .button-light-blue {
@@ -169,6 +199,36 @@
       &:focus,
       &:focus-visible {
         @apply !outline-none !shadow-none !border-b-light-blue !bg-transparent;
+      }
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+      @apply accent-light-blue;
+      accent-color: #64bfdd;
+    }
+
+    /* Custom checkbox styling */
+    input[type='checkbox'] {
+      @apply appearance-none w-5 h-5 border-2 border-white rounded cursor-pointer relative shrink-0;
+      background-color: transparent;
+
+      &:checked {
+        @apply bg-light-blue border-light-blue;
+      }
+
+      &:checked::after {
+        content: '';
+        @apply absolute inset-0 flex items-center justify-center;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      &:focus,
+      &:focus-visible {
+        @apply outline-none ring-2 ring-light-blue ring-offset-2 ring-offset-charcoal;
       }
     }
 
