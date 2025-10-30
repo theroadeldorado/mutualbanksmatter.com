@@ -47,7 +47,7 @@ $section->add_classes([
               <?php endif; ?>
 
               <?php if ($title): ?>
-                <p class="heading-6">
+                <p class="heading-6 mb-2">
                   <?php echo esc_html($title); ?>
                 </p>
               <?php endif; ?>

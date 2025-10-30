@@ -268,7 +268,7 @@ $days_remaining = fire_get_days_until_expiration();
             </div>
           </div>
 
-          <div class="flex gap-4">
+          <div class="flex gap-4 justify-end">
 
             <a href="<?php echo home_url('/assets'); ?>" class="button text-base">
               Cancel

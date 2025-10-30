@@ -15,11 +15,13 @@
   /* Text Styles */
   --text-lg: 1.25rem;
   --text-lg--line-height: 1.5;
+  --text-lg-font-weight: var(--font-weight-light);
   --text-base: 1rem;
   --text-base--line-height: 1.5;
+  --text-base-font-weight: var(--font-weight-light);
   --text-sm: 0.875rem;
   --text-sm--line-height: 1.5;
-
+  --text-sm-font-weight: var(--font-weight-light);
   /* Line heights */
   --line-height-tight: 1.3;
   --line-height-normal: 1.5;

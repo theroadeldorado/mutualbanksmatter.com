@@ -25,7 +25,7 @@ $section->add_classes([
 <div class="fire-container">
   <?php if ($title): ?>
     <div class="mb-8 col-[main] <?php echo $layout === '2-col' ? '' : 'md:col-[col-2/col-11] lg:col-[col-2/col-10] xl:col-[col-4/col-9]'; ?>">
-      <?php new Fire_Heading($tag ? $tag : 'h2', $title, 'heading-3 text-white'); ?>
+      <?php new Fire_Heading($tag ? $tag : 'h2', $title, $layout === '2-col' ? 'heading-3' : 'heading-2' . ' text-white'); ?>
     </div>
   <?php endif; ?>
 

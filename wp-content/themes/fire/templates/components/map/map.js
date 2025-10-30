@@ -29,13 +29,23 @@ export default () => ({
       return;
     }
 
-    this.map = L.map('map').setView([39.8283, -98.5795], 4);
+    this.map = L.map('map', {
+      scrollWheelZoom: false,
+    }).setView([39.8283, -96.5795], 4.5);
 
     // Add CartoDB Voyager tile layer (has darker blue water similar to Google Maps)
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 19,
     }).addTo(this.map);
+
+    this.map.on('click', () => {
+      this.map.scrollWheelZoom.enable();
+    });
+
+    this.map.on('mouseout', () => {
+      this.map.scrollWheelZoom.disable();
+    });
 
     // Add markers for all locations
     this.addLocationMarkers();
@@ -47,7 +57,7 @@ export default () => ({
   // Create Font Awesome style marker icon
   createMarkerIcon(isActive = false) {
     return L.divIcon({
-      className: 'marker-pin' + (isActive ? ' active' : ''),
+      className: `marker-pin${isActive ? ' active' : ''}`,
       html: this.MAP_PIN_SVG,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
@@ -64,11 +74,11 @@ export default () => ({
         });
 
         // Create popup content
-        const fullAddress = `${location.address1 ? location.address1 + ', ' : ''}${location.address2 || ''}`;
+        const fullAddress = `${location.address1 ? `${location.address1}, ` : ''}${location.address2 || ''}`;
         const popupContent = `
           <div class="popup-title">${location.title}</div>
           <div class="popup-address">
-            ${location.address1 ? location.address1 + '<br>' : ''}
+            ${location.address1 ? `${location.address1}<br>` : ''}
             ${location.address2 || ''}
           </div>
           <div class="popup-actions">
@@ -76,8 +86,7 @@ export default () => ({
               location.actions && location.actions.length > 0
                 ? location.actions
                     .map(
-                      (action) =>
-                        `<a href="${action.defaultUrl}" target="_blank" class="location-action popup-action">
+                      (action) => `<a href="${action.defaultUrl}" target="_blank" class="location-action popup-action">
                   ${action.label}
                 </a>`
                     )
@@ -137,7 +146,7 @@ export default () => ({
       card.className = 'location-card';
       card.dataset.index = displayIndex;
 
-      const fullAddress = `${location.address1 ? location.address1 + ', ' : ''}${location.address2 || ''}`;
+      const fullAddress = `${location.address1 ? `${location.address1}, ` : ''}${location.address2 || ''}`;
 
       // Find the original index of this location in the full locations array
       const originalIndex = this.locations.findIndex((loc) => loc.coords.lat === location.coords.lat && loc.coords.lng === location.coords.lng && loc.title === location.title);
@@ -145,7 +154,7 @@ export default () => ({
       card.innerHTML = `
         <div class="location-name">${location.title}</div>
         <div class="location-address">
-          ${location.address1 ? location.address1 + '<br>' : ''}
+          ${location.address1 ? `${location.address1}<br>` : ''}
           ${location.address2 || ''}
         </div>
         <div class="location-actions">
@@ -153,8 +162,7 @@ export default () => ({
             location.actions && location.actions.length > 0
               ? location.actions
                   .map(
-                    (action) =>
-                      `<a href="${action.defaultUrl}" target="_blank" class="location-action" onclick="event.stopPropagation()">
+                    (action) => `<a href="${action.defaultUrl}" target="_blank" class="location-action" onclick="event.stopPropagation()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
                   <path d="M368 64C359.2 64 352 71.2 352 80C352 88.8 359.2 96 368 96L521.4 96L260.7 356.7C254.5 362.9 254.5 373.1 260.7 379.3C266.9 385.5 277.1 385.5 283.3 379.3L544 118.6L544 272C544 280.8 551.2 288 560 288C568.8 288 576 280.8 576 272L576 80C576 71.2 568.8 64 560 64L368 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 400C480 391.2 472.8 384 464 384C455.2 384 448 391.2 448 400L448 496C448 522.5 426.5 544 400 544L144 544C117.5 544 96 522.5 96 496L96 240C96 213.5 117.5 192 144 192L240 192C248.8 192 256 184.8 256 176C256 167.2 248.8 160 240 160L144 160z"/>
                 </svg>
@@ -259,7 +267,7 @@ export default () => ({
             }),
           }).addTo(this.map);
 
-          this.userMarker.bindPopup(`<div class="popup-title">Your Location</div>`).openPopup();
+          this.userMarker.bindPopup('<div class="popup-title">Your Location</div>').openPopup();
 
           // Zoom to user location
           this.map.setView([lat, lon], 10);
