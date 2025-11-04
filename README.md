@@ -46,9 +46,3 @@ define( 'WP_LOCAL_DEV', true );
 npm install
 npm run dev
 ```
-
-## Related Resources
-
-MAMP PRO - [https://www.mamp.info/en/mamp/mac](https://www.mamp.info/en/mamp/mac/)
-
-Setting up XDebug in VSCode - https://brent.craft.me/R818HxRrX5R87C
