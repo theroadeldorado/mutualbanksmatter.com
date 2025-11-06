@@ -39,12 +39,8 @@ if (!function_exists('get_field')) {
     <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=<?php print $bugherd_api_key; ?>" async="true"></script>
   <?php endif; ?>
 
-  <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/theme/assets/media/favicons/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri(); ?>/theme/assets/media/favicons/favicon.svg" />
-  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/theme/assets/media/favicons/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/theme/assets/media/favicons/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="MyWebSite" />
-  <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/theme/assets/media/favicons/site.webmanifest" />
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link href="<?php echo get_template_directory_uri(); ?>/theme/assets/media/favicons/mm-favicon.png" rel="shortcut icon" type="image/x-icon"/>
 
   <?php
     $global_scripts = function_exists('get_field') ? get_field('scripts', 'site_settings') : false;
