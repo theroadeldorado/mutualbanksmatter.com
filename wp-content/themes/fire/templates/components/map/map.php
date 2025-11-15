@@ -58,8 +58,9 @@ $section->add_classes([
               type="text"
               id="location-search"
               class="search-input"
-              placeholder="Enter your address or zip code"
+              placeholder="Search by zip code"
               autocomplete="off"
+              maxlength="5"
               @input="handleSearch($event)"
               @keydown="handleSearchKeydown($event)"
             />
@@ -67,7 +68,7 @@ $section->add_classes([
         </div>
 
         <div class="locations-count" id="locations-count">
-          All locations (<?php echo count($locations); ?>)
+          Enter a zip code to search
         </div>
 
         <div id="locations-list"></div>

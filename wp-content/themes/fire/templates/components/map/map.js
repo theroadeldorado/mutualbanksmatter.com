@@ -50,8 +50,7 @@ export default () => ({
     // Add markers for all locations
     this.addLocationMarkers();
 
-    // Render location list
-    this.renderLocationList(this.locations);
+    // Don't render location list initially - wait for search
   },
 
   // Create Font Awesome style marker icon
@@ -136,7 +135,7 @@ export default () => ({
     const listContainer = document.getElementById('locations-list');
     listContainer.innerHTML = '';
 
-    if (locations.length === 0) {
+    if (!locations || locations.length === 0) {
       listContainer.innerHTML = '<div class="no-results">No locations found matching your search.</div>';
       return;
     }
@@ -215,27 +214,21 @@ export default () => ({
 
     clearTimeout(this.searchTimeout);
 
-    if (query.length < 3) {
-      this.renderLocationList(this.locations);
-      document.getElementById('locations-count').textContent = `All locations (${this.locations.length})`;
+    if (query.length < 5) {
+      this.renderLocationList(null);
+      document.getElementById('locations-count').textContent = 'Enter a zip code to search';
       return;
     }
 
-    // Filter locations by title or address
-    const filtered = this.locations.filter((location) => {
-      const searchString = `${location.title} ${location.address1} ${location.address2}`.toLowerCase();
-      return searchString.includes(query.toLowerCase());
-    });
-
-    this.renderLocationList(filtered);
-    document.getElementById('locations-count').textContent = `${filtered.length} location${filtered.length !== 1 ? 's' : ''} found`;
+    // Trigger address search for zip codes
+    this.searchAddress(query);
   },
 
   // Handle Enter key for address search
   handleSearchKeydown(event) {
     if (event.key === 'Enter') {
       const query = event.target.value.trim();
-      if (query.length >= 3) {
+      if (query.length >= 5) {
         this.searchAddress(query);
       }
     }
@@ -293,13 +286,17 @@ export default () => ({
     return R * c;
   },
 
-  // Sort locations by distance from a point
+  // Sort locations by distance from a point and filter to within 50 miles
   sortLocationsByDistance(lat, lon) {
+    const maxDistanceMiles = 50;
+    const maxDistanceKm = maxDistanceMiles * 1.60934; // Convert miles to km
+
     return this.locations
       .map((location) => ({
         ...location,
         distance: this.calculateDistance(lat, lon, location.coords.lat, location.coords.lng),
       }))
+      .filter((location) => location.distance <= maxDistanceKm)
       .sort((a, b) => a.distance - b.distance);
   },
 });
